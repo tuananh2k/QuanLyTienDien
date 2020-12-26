@@ -11,6 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import models.HoTieuThuModel;
@@ -84,6 +90,85 @@ public class QuanLyThongTinView2 extends javax.swing.JPanel {
      return new HoTieuThuModel(maKH, ten, gioiTinh, ngaySinh, cmnd, sdt, ngayDK, diaChi,loaiDien);
     }
 
+    public JButton getBtnReset() {
+        return btnReset;
+    }
+
+    public JButton getBtnSua() {
+        return btnSua;
+    }
+
+    public JButton getBtnThem() {
+        return btnThem;
+    }
+
+    public JButton getBtnTimKiem() {
+        return btnTimKiem;
+    }
+
+    public JComboBox<String> getCboLoaiDien() {
+        return cboLoaiDien;
+    }
+
+    public ButtonGroup getGrpGioiTinh() {
+        return grpGioiTinh;
+    }
+
+    public JRadioButton getRdNam() {
+        return rdNam;
+    }
+
+    public JRadioButton getRdNu() {
+        return rdNu;
+    }
+
+    public JTable getTblBang() {
+        return tblBang;
+    }
+
+    public JTextField getTxtCMND() {
+        return txtCMND;
+    }
+
+    public JTextField getTxtDiaChi() {
+        return txtDiaChi;
+    }
+
+    public JTextField getTxtMaKH() {
+        return txtMaKH;
+    }
+
+    public JTextField getTxtNgayDK() {
+        return txtNgayDK;
+    }
+
+    public JTextField getTxtNgaySinh() {
+        return txtNgaySinh;
+    }
+
+    public JTextField getTxtSDT() {
+        return txtSDT;
+    }
+
+    public JTextField getTxtTen() {
+        return txtTen;
+    }
+    
+    public void setModel(HoTieuThuModel hoTieuThuModel)
+    {
+        getTxtTen().setText(hoTieuThuModel.getTen());
+            getTxtMaKH().setText(hoTieuThuModel.getMaKH());
+            getTxtMaKH().setEditable(false);
+            getTxtCMND().setText(hoTieuThuModel.getCmnd());
+            getTxtDiaChi().setText(hoTieuThuModel.getDiaChi());
+            if(hoTieuThuModel.getGioiTinh().equals("Nam"))
+            {getRdNam().setSelected(true);} else {getRdNu().setSelected(true);}
+            getTxtNgaySinh().setText(hoTieuThuModel.dateToString(hoTieuThuModel.getNgaySinh()));
+            getTxtNgayDK().setText(hoTieuThuModel.dateToString(hoTieuThuModel.getNgayDK()));
+            getTxtSDT().setText(hoTieuThuModel.getSdt());
+            getCboLoaiDien().setSelectedItem(hoTieuThuModel.getLoaiDien());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

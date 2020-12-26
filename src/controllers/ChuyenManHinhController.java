@@ -68,6 +68,8 @@ public void setEvent(List<DanhMucModel> listDanhMuc) {
                 switch (kind) {
                     case "QuanLyThongTin":
                         node = new QuanLyThongTinView2();
+                        QuanLyThongTinController quanLyThongTinController =  new QuanLyThongTinController((QuanLyThongTinView2) node);
+                        
                         break;
                     case "QuanLyChiSoDien":
                         node = new ChiSoDienView2();

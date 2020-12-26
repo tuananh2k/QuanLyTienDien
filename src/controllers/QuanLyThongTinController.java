@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import models.HoTieuThuModel;
 import views.QuanLyThongTinView;
 import views.HomeView;
+import views.QuanLyThongTinView2;
 import views.TimKiemmaKHView;
 /**
  *
@@ -28,7 +29,7 @@ import views.TimKiemmaKHView;
  */
 public class QuanLyThongTinController {
 
-    QuanLyThongTinView view;
+    QuanLyThongTinView2 view;
     HoTieuThuModel model;
     private final String[] tableHeaders = {"Mã KH", "Họ tên", "Giới tính", "Ngày sinh", "CMND", "SĐT", "Ngày đăng ký", "Địa chỉ"};
     SQLServerConnect sqlServerConnect;
@@ -36,11 +37,11 @@ public class QuanLyThongTinController {
     ListSelectionModel listSelectionModel;
     HomeView homeView;
     String maKHSelected="";
-    public QuanLyThongTinController() {
+
+    public QuanLyThongTinController(QuanLyThongTinView2 view) {
+        this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
-        view = new QuanLyThongTinView();
-        
         setHeaderForTable();
         view.getBtnThem().addActionListener(al -> btnThemPerformed());
         view.getBtnReset().addActionListener(al -> btnResetPerformed());
@@ -50,6 +51,7 @@ public class QuanLyThongTinController {
         view.getBtnTimKiem().addActionListener(al-> btnTimKiemPerformed());
         getDataFromDB();
     }
+    
     ListSelectionListener listSelectionListener()
     {
         ListSelectionListener lsl =new ListSelectionListener() {
@@ -79,17 +81,7 @@ public class QuanLyThongTinController {
             while(rs.next())
             {
             HoTieuThuModel hoTieuThuModel = getDataFromResultSet(rs);
-            view.getTxtTen().setText(hoTieuThuModel.getTen());
-            view.getTxtMaKH().setText(hoTieuThuModel.getMaKH());
-            view.getTxtMaKH().setEditable(false);
-            view.getTxtCMND().setText(hoTieuThuModel.getCmnd());
-            view.getTxtDiaChi().setText(hoTieuThuModel.getDiaChi());
-            if(hoTieuThuModel.getGioiTinh().equals("Nam"))
-            {view.getRdNam().setSelected(true);} else {view.getRdNu().setSelected(true);}
-            view.getTxtNgaySinh().setText(hoTieuThuModel.dateToString(hoTieuThuModel.getNgaySinh()));
-            view.getTxtNgayDK().setText(hoTieuThuModel.dateToString(hoTieuThuModel.getNgayDK()));
-            view.getTxtSDT().setText(hoTieuThuModel.getSdt());
-            view.getCboLoaiDien().setSelectedItem(hoTieuThuModel.getLoaiDien());
+            view.setModel(hoTieuThuModel);
             }ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
@@ -229,7 +221,5 @@ public class QuanLyThongTinController {
         }
         JOptionPane.showMessageDialog(view, message);
     }
-    public static void main(String[] args) {
-        new QuanLyThongTinController();
-    }
+    
 }
