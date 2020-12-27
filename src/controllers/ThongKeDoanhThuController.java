@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import models.ThongKeTongDoanhThuModel;
-import views.HomeView;
 import views.ThongKeDoanhThuView;
 
 /**
@@ -24,12 +23,11 @@ public class ThongKeDoanhThuController {
     Connection connection;
     ThongKeDoanhThuView view;
     ThongKeTongDoanhThuModel model;
-    HomeView homeView;
 
-    public ThongKeDoanhThuController() {
+    public ThongKeDoanhThuController(ThongKeDoanhThuView view) {
+        this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
-        view = new ThongKeDoanhThuView();
         getData();
         tinhTongDoanhThu();
         view.getBtnTim().addActionListener(al -> timTheoMaThang());

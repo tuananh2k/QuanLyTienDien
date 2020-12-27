@@ -34,8 +34,8 @@ public class QuanLyHoaDonController {
     Connection conn;
     ListSelectionModel listSelectionModel;
 
-    public QuanLyHoaDonController() {
-        view = new QuanLyHoaDonView();
+    public QuanLyHoaDonController(QuanLyHoaDonView view) {
+        this.view = view;
         serverConnect = new SQLServerConnect();
         conn = serverConnect.connect();
         getDataDB();
@@ -94,10 +94,6 @@ public class QuanLyHoaDonController {
             Logger.getLogger(QuanLyHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }
-
-    public static void main(String[] args) {
-        new QuanLyHoaDonController();
     }
 
     private void setThanhToan() {

@@ -20,83 +20,83 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import models.HoTieuThuModel;
 import views.QuanLyThongTinView;
-import views.HomeView;
-import views.QuanLyThongTinView2;
 import views.TimKiemmaKHView;
+
 /**
  *
  * @author PhamDoanHieu
  */
 public class QuanLyThongTinController {
 
-    QuanLyThongTinView2 view;
+    QuanLyThongTinView view;
     HoTieuThuModel model;
     private final String[] tableHeaders = {"Mã KH", "Họ tên", "Giới tính", "Ngày sinh", "CMND", "SĐT", "Ngày đăng ký", "Địa chỉ"};
     SQLServerConnect sqlServerConnect;
     Connection connection;
     ListSelectionModel listSelectionModel;
-    HomeView homeView;
-    String maKHSelected="";
+    String maKHSelected = "";
 
-    public QuanLyThongTinController(QuanLyThongTinView2 view) {
+    public QuanLyThongTinController(QuanLyThongTinView view) {
         this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         setHeaderForTable();
         view.getBtnThem().addActionListener(al -> btnThemPerformed());
         view.getBtnReset().addActionListener(al -> btnResetPerformed());
-        view.getBtnSua().addActionListener(al->btnSuaPerformed());
+        view.getBtnSua().addActionListener(al -> btnSuaPerformed());
         listSelectionModel = view.getTblBang().getSelectionModel();
         listSelectionModel.addListSelectionListener(listSelectionListener());
-        view.getBtnTimKiem().addActionListener(al-> btnTimKiemPerformed());
+        view.getBtnTimKiem().addActionListener(al -> btnTimKiemPerformed());
         getDataFromDB();
     }
-    
-    ListSelectionListener listSelectionListener()
-    {
-        ListSelectionListener lsl =new ListSelectionListener() {
+
+    ListSelectionListener listSelectionListener() {
+        ListSelectionListener lsl = new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
                 try {
                     int selectedRow = listSelectionModel.getMinSelectionIndex();
                     System.out.println("hàng đc chọn: " + selectedRow);
-                     maKHSelected = (String) view.getTblBang().getValueAt(selectedRow, 0); // dòng i cột 0
+                    maKHSelected = (String) view.getTblBang().getValueAt(selectedRow, 0); // dòng i cột 0
                     System.out.println("'" + maKHSelected + "'");
                     showKhachHangModel(maKHSelected);
                 } catch (Exception e) {
                 }
-                
+
             }
         };
         return lsl;
     }
-    public void showKhachHangModel(String maKH)
-    {
-        
+
+    public void showKhachHangModel(String maKH) {
+
         try {
             String sqlQuery = "Select * from HoTieuThu where HoTieuThu.maKH like ?";
             PreparedStatement ps = connection.prepareStatement(sqlQuery);
             ps.setString(1, maKH);
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
-            {
-            HoTieuThuModel hoTieuThuModel = getDataFromResultSet(rs);
-            view.setModel(hoTieuThuModel);
-            }ps.close();
+            while (rs.next()) {
+                HoTieuThuModel hoTieuThuModel = getDataFromResultSet(rs);
+                view.setModel(hoTieuThuModel);
+            }
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public void btnThemPerformed() {
         model = view.getModel();
-        view.getDtm().addRow(model.toStringArray());
-        insertDataToDB();
-        getDataFromDB();
+        if (model.getNgayDK() != null && model.getNgaySinh() != null) {
+            view.getDtm().addRow(model.toStringArray());
+            insertDataToDB();
+            getDataFromDB();
+        }
 
     }
-    public HoTieuThuModel getDataFromResultSet(ResultSet rs)
-    { 
-        HoTieuThuModel hoTieuThuModel =null;
+
+    public HoTieuThuModel getDataFromResultSet(ResultSet rs) {
+        HoTieuThuModel hoTieuThuModel = null;
         try {
             String maKH = rs.getString("maKH");
             String hoTen = rs.getString("hoTen");
@@ -107,12 +107,13 @@ public class QuanLyThongTinController {
             String sdt = rs.getString("sdt");
             Date ngayDangKi = new Date(rs.getDate("ngayDangKi").getTime());
             String loaiDien = rs.getString("loaiDien");
-            hoTieuThuModel = new HoTieuThuModel(maKH, hoTen, gioiTinh, ngaySinh, CMND, sdt, ngayDangKi, diaChi,loaiDien);
+            hoTieuThuModel = new HoTieuThuModel(maKH, hoTen, gioiTinh, ngaySinh, CMND, sdt, ngayDangKi, diaChi, loaiDien);
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return hoTieuThuModel;
     }
+
     public void getDataFromDB() {
         try {
             view.getDtm().setRowCount(0);
@@ -132,7 +133,7 @@ public class QuanLyThongTinController {
     public void insertDataToDB() {
         try {
             String sqlQueryInsert = "INSERT HOTIEUTHU "
-                                     + "VALUES (? ,?,? ,? ,?,? ,? ,?,?)";
+                    + "VALUES (?, ? ,? ,? ,? ,? ,? ,? ,?)";
             PreparedStatement ps = connection.prepareStatement(sqlQueryInsert);
             ps.setString(1, model.getMaKH());
             ps.setString(2, model.getTen());
@@ -145,11 +146,19 @@ public class QuanLyThongTinController {
             ps.setString(9, model.getLoaiDien());
             int result = ps.executeUpdate();
             if (result == 1) {
-                System.out.println("insert complete");
+                JOptionPane.showMessageDialog(view, "Thêm thành công!");
+            } else {
+                JOptionPane.showMessageDialog(view, "Thêm thất bại!");
             }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.toString().contains("duplicate key")) {
+                JOptionPane.showMessageDialog(view, "Trùng khoá chính!");
+            } else if (ex.toString().contains("String or binary data would be truncated")) {
+                JOptionPane.showMessageDialog(view, "Không thể để 1 trường quá dài!");
+            } else {
+                Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -162,12 +171,11 @@ public class QuanLyThongTinController {
         getDataFromDB();
 
     }
-    public void insertDataToTableView(ResultSet rs)
-    {
+
+    public void insertDataToTableView(ResultSet rs) {
         view.getDtm().setRowCount(0);
         try {
-            while(rs.next())
-            {
+            while (rs.next()) {
                 model = getDataFromResultSet(rs);
                 view.getDtm().addRow(model.toStringArray());
             }
@@ -175,51 +183,54 @@ public class QuanLyThongTinController {
             Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void btnTimKiemPerformed() {
-       TimKiemThongTinController timKiemController = new TimKiemThongTinController(this);
-        
+        TimKiemThongTinController timKiemController = new TimKiemThongTinController(this);
+
     }
 
     private void btnSuaPerformed() {
-        String message="";
         try {
             model = view.getModel();
-            System.out.println("ma kh cần sửa : " + maKHSelected);
-            System.out.println("Data mới: " + model.toString());
-            String sql = "UPDATE [dbo].[HOTIEUTHU]" +
-                    "       SET" +
-                    "       [hoTen] = ?" +
-                    "      ,[CMND] = ?" +
-                    "      ,[diaChi] = ?" +
-                    "      ,[gioiTinh] = ?" +
-                    "      ,[ngaySinh] = ?" +
-                    "      ,[sdt] = ?" +
-                    "      ,[ngayDangKi] = ?"+
-                    "      ,loaidien = ?"+
-                    " WHERE maKH like ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, model.getTen());
-            ps.setString(2, model.getCmnd());
-            ps.setString(3,model.getDiaChi());
-            ps.setString(4, model.getGioiTinh());
-            ps.setObject(5, model.utilDateToSQLDate(model.getNgaySinh()));
-            ps.setString(6, model.getSdt());
-            ps.setObject(7, model.utilDateToSQLDate(model.getNgayDK()));
-            ps.setString(8, model.getLoaiDien());
-            ps.setString(9, model.getMaKH());
-            int result = ps.executeUpdate();
-            if(result==1){
-                System.out.println("Thay doi gia tri thanh cong!");
-                message= "Thay doi gia tri thanh cong!";
+            if (model.getNgayDK() != null && model.getNgaySinh() != null) {
+                System.out.println("ma kh cần sửa : " + maKHSelected);
+                System.out.println("Data mới: " + model.toString());
+                String sql = "UPDATE [dbo].[HOTIEUTHU]"
+                        + "       SET"
+                        + "       [hoTen] = ?"
+                        + "      ,[CMND] = ?"
+                        + "      ,[diaChi] = ?"
+                        + "      ,[gioiTinh] = ?"
+                        + "      ,[ngaySinh] = ?"
+                        + "      ,[sdt] = ?"
+                        + "      ,[ngayDangKi] = ?"
+                        + "      ,loaidien = ?"
+                        + " WHERE maKH like ?";
+                PreparedStatement ps = connection.prepareStatement(sql);
+                ps.setString(1, model.getTen());
+                ps.setString(2, model.getCmnd());
+                ps.setString(3, model.getDiaChi());
+                ps.setString(4, model.getGioiTinh());
+                ps.setObject(5, model.utilDateToSQLDate(model.getNgaySinh()));
+                ps.setString(6, model.getSdt());
+                ps.setObject(7, model.utilDateToSQLDate(model.getNgayDK()));
+                ps.setString(8, model.getLoaiDien());
+                ps.setString(9, model.getMaKH());
+                int result = ps.executeUpdate();
+                if (result == 1) {
+                    JOptionPane.showMessageDialog(view, "Thay đổi giá trị thành công!");
+                }
+                getDataFromDB();
+                ps.close();
             }
-            getDataFromDB();
-            ps.close();
-        
         } catch (SQLException ex) {
-            Logger.getLogger(CapNhatChiSoDienController.class.getName()).log(Level.SEVERE, null, ex);
-            message = "Không thể cập nhật giá trị! \nCó lỗi xảy ra! ";
+            if (ex.toString().contains("String or binary data would be truncated")) {
+                JOptionPane.showMessageDialog(view, "Không thể để 1 trường quá dài!");
+            } else {
+                Logger.getLogger(QuanLyChiSoDienController.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(view, "Không thể cập nhật giá trị! \nCó lỗi xảy ra! ");
+            }
         }
-        JOptionPane.showMessageDialog(view, message);
     }
-    
+
 }

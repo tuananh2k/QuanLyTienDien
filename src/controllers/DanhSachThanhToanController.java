@@ -12,25 +12,23 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import models.HoTieuThuModel;
-import views.DanhSachHoTieuThuNopVaChuaNop;
-import views.HomeView;
+import views.DanhSachThanhToanView;
 
 /**
  *
  * @author ADMIN
  */
-public class DanhSachNopVaChuaNopController {
+public class DanhSachThanhToanController {
     HoTieuThuModel model;
-    DanhSachHoTieuThuNopVaChuaNop view;
+    DanhSachThanhToanView view;
     private final String[] tableHeaders = {"Mã KH", "Họ tên", "Giới tính", "Ngày sinh", "CMND", "SĐT", "Ngày đăng ký", "Địa chỉ", "Loại điện"};
     SQLServerConnect sqlServerConnect;
     Connection connection;
-    HomeView homeView;
     
-    public DanhSachNopVaChuaNopController(){
+    public DanhSachThanhToanController(DanhSachThanhToanView view){
+        this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
-        view = new DanhSachHoTieuThuNopVaChuaNop();
         setHeaderForTable();
         getDataDaNop();
         getDataForChuaNop();

@@ -31,7 +31,6 @@ public class HoaDonController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 view.dispose();
-                new QuanLyHoaDonController();
             }
         });
     }

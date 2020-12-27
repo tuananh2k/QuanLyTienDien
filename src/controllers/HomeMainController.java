@@ -5,30 +5,45 @@
  */
 package controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import models.DanhMucModel;
 import views.HomeMainView;
-import views.QuanLyHoaDonView;
-import views.QuanLyThongTinView;
 
 /**
  *
  * @author ADMIN
  */
 public class HomeMainController {
-    private  HomeMainView view;
-    private QuanLyThongTinController controller;
-    private QuanLyThongTinView view1;
-    
-    public HomeMainController(){
+
+    private HomeMainView view;
+
+    public HomeMainController() {
         view = new HomeMainView();
-        view.getLabThongTin().addMouseListener(new MouseListener() {
+        ChuyenManHinhController chuyenManHinhController = new ChuyenManHinhController(view.getJpnView());
+        chuyenManHinhController.setDashboard(view.getJpnThongTin(), view.getLabThongTin()); //gọi nút mặc định khi mở view
+
+        List<DanhMucModel> listDanhMuc = new ArrayList<>();
+        listDanhMuc.add(new DanhMucModel("QuanLyThongTin", view.getJpnThongTin(), view.getLabThongTin()));
+        listDanhMuc.add(new DanhMucModel("QuanLyChiSoDien", view.getJpnChiSoDien(), view.getLabChiSoDien()));
+        listDanhMuc.add(new DanhMucModel("DanhSachThanhToan", view.getJpnThanhToan(), view.getLabThanhToan()));
+        listDanhMuc.add(new DanhMucModel("QuanLyHoaDon", view.getJpnHoaDon(), view.getLabHoaDon()));
+        listDanhMuc.add(new DanhMucModel("ThongKeDoanhThu", view.getJpnThongKe(), view.getLabThongKe()));
+        chuyenManHinhController.setEvent(listDanhMuc);
+
+        view.getLabLogout().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                view1 = new QuanLyThongTinView();
-                view.getJpnView().add(view1);
-//                controller = new QuanLyThongTinController();
-//                view.setVisible(false);
+                int i = JOptionPane.showConfirmDialog(view, "Đăng xuất?");
+                if (i == 0) {
+                    view.dispose();
+                    new LoginController();
+                }
             }
 
             @Override
@@ -48,11 +63,11 @@ public class HomeMainController {
 
             @Override
             public void mouseExited(MouseEvent me) {
-                
+               
             }
         });
     }
-    
+
     public static void main(String[] args) {
         new HomeMainController();
     }

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import models.LoginModel;
-import views.HomeView;
+import views.HomeMainView;
 import views.LoginView;
 
 /**
@@ -23,9 +23,9 @@ public class LoginController {
 
     LoginView loginView;
     LoginModel loginModel;
-    HomeView homeView;
     SQLServerConnect sqlServerConnect;
     Connection connection;
+    HomeMainView homeView;
 
     public LoginController() {
         this.loginView = new LoginView();
@@ -40,7 +40,7 @@ public class LoginController {
         boolean validate = false;
         if (!loginModel.isEmpty()) {
             if (loginValidator(loginModel.getTaiKhoan(), loginModel.getMatKhau())) {
-                HomeController homeController = new HomeController();
+                HomeMainController homeMainController = new HomeMainController();
                 loginView.dispose();
                 JOptionPane.showMessageDialog(homeView, "Xin chào " + loginModel.getTaiKhoan());
             }
