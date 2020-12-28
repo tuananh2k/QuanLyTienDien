@@ -1,6 +1,7 @@
-package controllers;
+package main;
 
 
+import controllers.LoginController;
 import controllers.LoginController;
 
 /*
@@ -15,8 +16,6 @@ import controllers.LoginController;
  */
 public class app {
     public static void main(String[] args) {
-        
-        LoginController loginController = new LoginController();
-        
+        new LoginController();
     }
 }

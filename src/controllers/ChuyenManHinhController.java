@@ -36,12 +36,23 @@ public class ChuyenManHinhController {
 
     public ChuyenManHinhController(JPanel jpnRoot) {
         this.jpnRoot = jpnRoot;
+        initController();
+
+    }
+
+    public void initController() {
+        new QuanLyThongTinController((QuanLyThongTinView) quanLyThongTinView);
+        new QuanLyChiSoDienController((QuanLyChiSoDienView) quanLyChiSoDienView);
+        new DanhSachThanhToanController((DanhSachThanhToanView) danhSachThanhToanView);
+        new QuanLyHoaDonController((QuanLyHoaDonView) quanLyHoaDonView);
+        new ThongKeDoanhThuController((ThongKeDoanhThuView) thongKeDoanhThuView);
+
     }
 
     public void setDashboard(JPanel jpnItem, JLabel jlbItem) {
         kindSelected = "QuanLyThongTin";
-        jpnItem.setBackground(new Color(141,205,145));// set màu cho panel khi được chọn
-        jlbItem.setBackground(new Color(141,205,145));
+        jpnItem.setBackground(new Color(141, 205, 145));// set màu cho panel khi được chọn
+        jlbItem.setBackground(new Color(141, 205, 145));
         JPanel node = quanLyThongTinView;
         new QuanLyThongTinController((QuanLyThongTinView) node);
         jpnRoot.removeAll();
@@ -77,23 +88,18 @@ public class ChuyenManHinhController {
             switch (kind) {
                 case "QuanLyThongTin":
                     node = quanLyThongTinView;
-                    new QuanLyThongTinController((QuanLyThongTinView) node);
                     break;
                 case "QuanLyChiSoDien":
                     node = quanLyChiSoDienView;
-                    new QuanLyChiSoDienController((QuanLyChiSoDienView) node);
                     break;
                 case "DanhSachThanhToan":
                     node = danhSachThanhToanView;
-                    new DanhSachThanhToanController((DanhSachThanhToanView) node);
                     break;
                 case "QuanLyHoaDon":
                     node = quanLyHoaDonView;
-                    new QuanLyHoaDonController((QuanLyHoaDonView) node);
                     break;
                 case "ThongKeDoanhThu":
                     node = thongKeDoanhThuView;
-                    new ThongKeDoanhThuController((ThongKeDoanhThuView) node);
                     break;
                 default:
                     break;
@@ -109,8 +115,8 @@ public class ChuyenManHinhController {
         @Override
         public void mousePressed(MouseEvent e) { //Được triệu hồi khi chuột trỏ đến
             kindSelected = kind;
-            jpnItem.setBackground(new Color(141,205,145));
-            jlbItem.setBackground(new Color(141,205,145));
+            jpnItem.setBackground(new Color(141, 205, 145));
+            jlbItem.setBackground(new Color(141, 205, 145));
         }
 
         @Override
@@ -120,8 +126,8 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) { //Được triệu hồi khi một nút chuột ĐÃ được nhấn trên một thành phần.
-            jpnItem.setBackground(new Color(141,205,145));
-            jlbItem.setBackground(new Color(141,205,145));
+            jpnItem.setBackground(new Color(141, 205, 145));
+            jlbItem.setBackground(new Color(141, 205, 145));
         }
 
         @Override
@@ -136,8 +142,8 @@ public class ChuyenManHinhController {
     private void setChangeBackground(String kind) { //khi một panel trong menu được chọn
         for (DanhMucModel item : listDanhMuc) {
             if (item.getKind().equalsIgnoreCase(kind)) {
-                item.getJlb().setBackground(new Color(141,205,145));
-                item.getJpn().setBackground(new Color(141,205,145));
+                item.getJlb().setBackground(new Color(141, 205, 145));
+                item.getJpn().setBackground(new Color(141, 205, 145));
             } else {
                 item.getJlb().setBackground(new Color(76, 175, 80));
                 item.getJpn().setBackground(new Color(76, 175, 80));

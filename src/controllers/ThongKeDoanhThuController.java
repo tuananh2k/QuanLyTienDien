@@ -31,10 +31,49 @@ public class ThongKeDoanhThuController {
         getData();
         tinhTongDoanhThu();
         view.getBtnTim().addActionListener(al -> timTheoMaThang());
+        
     }
 
     private void getData() {
+        
         try {
+//        String sql2 = "INSERT INTO [dbo].[HOTIEUTHU]\n" +
+//"           ([maKH]\n" +
+//"           ,[hoTen]\n" +
+//"           ,[CMND]\n" +
+//"           ,[diaChi]\n" +
+//"           ,[gioiTinh]\n" +
+//"           ,[ngaySinh]\n" +
+//"           ,[sdt]\n" +
+//"           ,[ngayDangKi]\n" +
+//"           ,[loaiDien])\n" +
+//"     VALUES\n" +
+//"           (?\n" +
+//"           ,?\n" +
+//"           ,?\n" +
+//"           ,?\n" +
+//"           ,?\n" +
+//"           ,?\n" +
+//"           ,?\n" +
+//"           ,?\n" +
+//"           ,?)";
+//        PreparedStatement ps2 = connection.prepareStatement(sql2);
+//        for(int i=15; i<30; i++)
+//        {
+//            ps2.setString(1, "KH0"+i);
+//            ps2.setString(2, "Khúc Bảo Châu");
+//            ps2.setString(3, i%2==0 ?"Nam" : "Nu");
+//            ps2.setString(4, "01/01/1992");
+//            ps2.setString(5, "045631544");
+//            ps2.setString(6, "036977215");
+//            ps2.setString(7, "12/12/2012");
+//            ps2.setString(8, i%2==0 ? "Ha Tinh" :"Ha Noi");
+//            ps2.setString(9, i%2==0 ? "Sản xuất" : "Kinh doanh");
+//            ps2.execute();
+//            System.out.println(i);
+//            
+//        }
+        
             String sql = "select * from tongdoanhthu";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
