@@ -5,6 +5,7 @@
  */
 package views;
 
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -70,6 +71,11 @@ public class LoginView extends javax.swing.JFrame {
         txtTaiKhoan.setBackground(new java.awt.Color(102, 204, 255));
         txtTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtTaiKhoan.setBorder(null);
+        txtTaiKhoan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTaiKhoanKeyPressed(evt);
+            }
+        });
 
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/loginBtn.png"))); // NOI18N
@@ -77,6 +83,11 @@ public class LoginView extends javax.swing.JFrame {
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangNhapActionPerformed(evt);
+            }
+        });
+        btnDangNhap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDangNhapKeyPressed(evt);
             }
         });
 
@@ -88,6 +99,11 @@ public class LoginView extends javax.swing.JFrame {
                 btnThoatActionPerformed(evt);
             }
         });
+        btnThoat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnThoatKeyPressed(evt);
+            }
+        });
 
         txtMatKhau.setBackground(new java.awt.Color(102, 204, 255));
         txtMatKhau.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -95,6 +111,11 @@ public class LoginView extends javax.swing.JFrame {
         txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatKhauActionPerformed(evt);
+            }
+        });
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyPressed(evt);
             }
         });
 
@@ -201,6 +222,40 @@ public class LoginView extends javax.swing.JFrame {
     private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatKhauActionPerformed
+
+    private void txtTaiKhoanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaiKhoanKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtMatKhau.requestFocus();
+        }
+    }//GEN-LAST:event_txtTaiKhoanKeyPressed
+
+    private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnDangNhap.requestFocus();
+        }
+    }//GEN-LAST:event_txtMatKhauKeyPressed
+
+    private void btnDangNhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDangNhapKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnDangNhap.doClick();
+        }
+        if(evt.getKeyCode() == KeyEvent.VK_RIGHT){
+            btnThoat.requestFocus();
+        }
+    }//GEN-LAST:event_btnDangNhapKeyPressed
+
+    private void btnThoatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnThoatKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnThoat.doClick();
+        }
+        if(evt.getKeyCode() == KeyEvent.VK_LEFT){
+            btnDangNhap.requestFocus();
+        }
+    }//GEN-LAST:event_btnThoatKeyPressed
     
     public static void main(String[] args) {
         new LoginView();
