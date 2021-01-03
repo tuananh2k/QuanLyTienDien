@@ -112,7 +112,7 @@ public class HomeMainView extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -145,7 +145,7 @@ public class HomeMainView extends javax.swing.JFrame {
             jpnThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnThongTinLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addComponent(labThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -173,7 +173,7 @@ public class HomeMainView extends javax.swing.JFrame {
             .addGroup(jpnChiSoDienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labChiSoDien, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jpnDanhSachThanhToan.setBackground(new java.awt.Color(76, 175, 80));
@@ -200,7 +200,7 @@ public class HomeMainView extends javax.swing.JFrame {
             .addGroup(jpnDanhSachThanhToanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jpnQuanLyHoaDon.setBackground(new java.awt.Color(76, 175, 80));
@@ -253,7 +253,7 @@ public class HomeMainView extends javax.swing.JFrame {
             jpnThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnThongKeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addComponent(labThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -303,7 +303,7 @@ public class HomeMainView extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1400, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +317,7 @@ public class HomeMainView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jpnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 1400, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

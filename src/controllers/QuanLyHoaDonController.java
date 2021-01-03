@@ -11,13 +11,16 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import models.HoaDonModel;
 import views.QuanLyHoaDonView;
 import views.TimKiemmaHDView;
@@ -145,25 +148,59 @@ public class QuanLyHoaDonController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+                    
                     String maKH = viewTimKiem.getTxtMaKH().getText();
+                    
                     String sql = "select HOADON.maKH, hoTen, maHD, ldtt, loaiDien, tien from HOADON\n"
                             + "join HOTIEUTHU on HOADON.maKH = HOTIEUTHU.maKH\n"
-                            + "where HOADON.maKH = ? or maHD = ? ";
+                            + "where HOADON.maKH+HoaDon.maHD like ?";
                     PreparedStatement ps = conn.prepareStatement(sql);
-                    ps.setString(1, maKH);
-                    ps.setString(2, maKH);
+                    ps.setString(1, "%" + maKH + "%");
                     ResultSet rs = ps.executeQuery();
-                    if(rs.next()==false){
+                    showData(rs);
                         JOptionPane.showMessageDialog(view, "Không tìm thấy Mã " + maKH);
-                    } else{
-                        showData(rs);
-                        viewTimKiem.dispose();
-                    }
+                    
                 } catch (SQLException ex) {
                     System.out.println(ex);
                 }
+                                                viewTimKiem.dispose();
+
             }
         });
-    }
 
+    }
+//public void insertDataToTableView(ResultSet rs) {
+//        view.getDtm().setRowCount(0);
+//        try {
+//            while (rs.next()) {
+//                model = getDataFromResultSet(rs);
+//                view.getDtm().addRow(model.toStringArray());
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(QuanLyThongTinController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+
+    public void buildTableData(DefaultTableModel dtm,ResultSet rs)
+    {
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+
+        try {
+            ResultSetMetaData metaData = rs.getMetaData();
+            
+            int columnCount = metaData.getColumnCount();
+            
+            while (rs.next()) {
+                Vector<Object> vector = new Vector<Object>();
+                for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                    vector.add(rs.getObject(columnIndex));
+                }
+                dtm.addRow(vector);
+                System.out.println(vector);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
