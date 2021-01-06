@@ -268,9 +268,12 @@ public class LoginView extends javax.swing.JFrame {
             txtTaiKhoanForcus();
         }
         
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            txtMatKhauForcus();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtMatKhau.requestFocus();
+            if (!passwordTyped) {
+                txtMatKhauForcus();
+                passwordTyped = true;
+            }
         }
     }//GEN-LAST:event_txtTaiKhoanKeyPressed
 
@@ -280,8 +283,11 @@ public class LoginView extends javax.swing.JFrame {
         {
             txtMatKhau.setText("");
         }*/
-        if(passwordTyped)
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+         if (!passwordTyped) {
+            txtMatKhauForcus();
+            passwordTyped = true;
+        }
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             //btnDangNhap.requestFocus();
             btnDangNhap.doClick();
         }
@@ -318,7 +324,6 @@ public class LoginView extends javax.swing.JFrame {
     }
     public void txtMatKhauForcus(){
         txtMatKhau.setText("");
-        System.out.println("???");
         setCustomBorder(JPanMatKhau,"Mật khẩu", 16);
     }
     private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
