@@ -300,9 +300,14 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtTaiKhoan.setText("");
         JPanTaiKhoan.setBorder(new TitledBorder("Tài Khoản"));
-        
+        //JPanTaiKhoan.setBorder(BorderFactory.createTitledBorder(null, "Tài Khoản", TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 0, 16)));
+        setCustomBorder(JPanTaiKhoan,"Tài Khoản", 16);
     }//GEN-LAST:event_txtTaiKhoanMouseClicked
-    
+    public void setCustomBorder(Object object, String title,int fontSize)
+    {
+        javax.swing.JPanel test=  (javax.swing.JPanel) object;
+        test.setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 0, fontSize)));
+    }
     public static void main(String[] args) {
         new LoginView();
     }
