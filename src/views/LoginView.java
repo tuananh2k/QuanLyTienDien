@@ -32,6 +32,7 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    boolean passwordTyped= false;
     public LoginView() {
         setTitle("Login");
         ImageIcon iconForm = new ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Documents\\NetBeansProjects\\QuanLyTienDien\\src\\icons\\login.png");
@@ -139,7 +140,6 @@ public class LoginView extends javax.swing.JFrame {
 
         txtMatKhau.setBackground(new java.awt.Color(102, 204, 255));
         txtMatKhau.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        txtMatKhau.setText("Mật Khẩu");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,7 +168,7 @@ public class LoginView extends javax.swing.JFrame {
         );
         JPanMatKhauLayout.setVerticalGroup(
             JPanMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -184,27 +184,28 @@ public class LoginView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(JPanTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(425, 425, 425)
                 .addComponent(btnDangNhap)
                 .addGap(101, 101, 101)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel3)
-                .addGap(174, 174, 174))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(JPanTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE))
+                        .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel3)
+                        .addGap(174, 174, 174))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,13 +261,26 @@ public class LoginView extends javax.swing.JFrame {
 
     private void txtTaiKhoanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaiKhoanKeyPressed
         // TODO add your handling code here:
+        System.out.println("user typing text..");
+        if(txtTaiKhoan.getText().indexOf("Tài Khoản")>-1)
+        {
+            txtTaiKhoan.setText("");
+            txtTaiKhoanForcus();
+        }
+        
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtMatKhauForcus();
             txtMatKhau.requestFocus();
         }
     }//GEN-LAST:event_txtTaiKhoanKeyPressed
 
     private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
         // TODO add your handling code here:
+      /*  if(String.valueOf(txtMatKhau.getPassword()).indexOf("Tài Khoản")>-1)
+        {
+            txtMatKhau.setText("");
+        }*/
+        if(passwordTyped)
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             //btnDangNhap.requestFocus();
             btnDangNhap.doClick();
@@ -295,17 +309,31 @@ public class LoginView extends javax.swing.JFrame {
 
     private void txtTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTaiKhoanMouseClicked
         // TODO add your handling code here:
-        txtTaiKhoan.setText("");
-        JPanTaiKhoan.setBorder(new TitledBorder("Tài Khoản"));
-        
+        txtTaiKhoanForcus();
     }//GEN-LAST:event_txtTaiKhoanMouseClicked
 
+    public void txtTaiKhoanForcus(){
+        txtTaiKhoan.setText("");
+        setCustomBorder(JPanTaiKhoan,"Tài Khoản", 16);
+    }
+    public void txtMatKhauForcus(){
+        txtMatKhau.setText("");
+        System.out.println("???");
+        setCustomBorder(JPanMatKhau,"Mật khẩu", 16);
+    }
     private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
         // TODO add your handling code here:
-        txtMatKhau.setText("");
-        JPanMatKhau.setBorder(new TitledBorder("Mật khẩu"));
+        txtMatKhauForcus();
+
     }//GEN-LAST:event_txtMatKhauMouseClicked
     
+
+    public void setCustomBorder(Object object, String title,int fontSize)
+    {
+        javax.swing.JPanel test=  (javax.swing.JPanel) object;
+        test.setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 0, fontSize)));
+    }
+
     public static void main(String[] args) {
         new LoginView();
     }

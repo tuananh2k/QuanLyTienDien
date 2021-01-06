@@ -139,6 +139,9 @@ public class QuanLyHoaDonController {
             }
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(ArrayIndexOutOfBoundsException ex)
+        {
+            System.out.println("QuanLyHoaDonController.java: Lỗi id label set =-1");
         }
     }
 
@@ -151,7 +154,7 @@ public class QuanLyHoaDonController {
                     String maKH = viewTimKiem.getTxtMaKH().getText();
                     String sql = "select HOADON.maKH, hoTen, maHD, ldtt, loaiDien, tien from HOADON\n"
                             + "join HOTIEUTHU on HOADON.maKH = HOTIEUTHU.maKH\n"
-                            + "where HOADON.maKH+HoaDon.maHD like ?";
+                            + "where HOADON.maKH+HoaDon.maHD+hoTen like ?";
                     PreparedStatement ps = conn.prepareStatement(sql);
                     ps.setString(1, "%" + maKH + "%");
                     ResultSet rs = ps.executeQuery();
