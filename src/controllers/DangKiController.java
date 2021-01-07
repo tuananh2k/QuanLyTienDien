@@ -27,6 +27,8 @@ public class DangKiController {
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         dangKiView.getBtnTaoTK().addActionListener(al -> btnDK());
+        dangKiView.getBtnThoat().addActionListener(al->btnThoat());
+        
     }
     
     private void btnDK() {
@@ -50,5 +52,9 @@ public class DangKiController {
             } else
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void btnThoat() {
+        dangKiView.dispose();
     }
 }

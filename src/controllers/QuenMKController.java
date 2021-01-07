@@ -28,6 +28,7 @@ public class QuenMKController {
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         quenMatKhauView.getBtnThayDoi().addActionListener(al -> btnThayDoi());
+        quenMatKhauView.getBtnThoat().addActionListener(al->btnThoat());
     }
 
     private void btnThayDoi() {
@@ -50,5 +51,9 @@ public class QuenMKController {
                 Logger.getLogger(QuenMKController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    private void btnThoat() {
+        quenMatKhauView.dispose();
     }
 }

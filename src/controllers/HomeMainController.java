@@ -21,7 +21,7 @@ import views.HomeMainView;
 public class HomeMainController {
 
     private HomeMainView view;
-
+   
     public HomeMainController() {
         view = new HomeMainView();
         ChuyenManHinhController chuyenManHinhController = new ChuyenManHinhController(view.getJpnView());

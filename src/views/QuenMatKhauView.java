@@ -5,6 +5,7 @@
  */
 package views;
 
+import controllers.LoginController;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -75,11 +76,6 @@ public class QuenMatKhauView extends javax.swing.JFrame {
         btnThoat.setBackground(new java.awt.Color(102, 255, 255));
         btnThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThoat.setText("THOÁT");
-        btnThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThoatActionPerformed(evt);
-            }
-        });
 
         txtTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTaiKhoan.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -201,11 +197,6 @@ public class QuenMatKhauView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnThoatActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -247,6 +238,12 @@ public class QuenMatKhauView extends javax.swing.JFrame {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void dispose() {
+        new LoginController();
+        super.dispose(); //To change body of generated methods, choose Tools | Templates.
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

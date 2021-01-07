@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -32,13 +33,16 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    boolean passwordTyped= false;
+    boolean passwordTyped = false;
+    boolean usernameTyped = false;
+
     public LoginView() {
         setTitle("Login");
         ImageIcon iconForm = new ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Documents\\NetBeansProjects\\QuanLyTienDien\\src\\icons\\login.png");
         setIconImage(iconForm.getImage());
         initComponents();
-        txtMatKhau.setEchoChar((char)0);
+        txtMatKhau.setEchoChar((char) 0);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -101,7 +105,7 @@ public class LoginView extends javax.swing.JFrame {
 
         txtTaiKhoan.setBackground(new java.awt.Color(102, 204, 255));
         txtTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        txtTaiKhoan.setText("Tài Khoản");
+        txtTaiKhoan.setText("Tên đăng nhập");
         txtTaiKhoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -258,71 +262,99 @@ public class LoginView extends javax.swing.JFrame {
 
     private void txtTaiKhoanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaiKhoanKeyPressed
         // TODO add your handling code here:
-        if(txtTaiKhoan.getText().indexOf("Tài Khoản")>-1)
-        {
+        if (!usernameTyped) {
             txtTaiKhoan.setText("");
-            txtTaiKhoanForcus();
-        }
-        
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtMatKhau.requestFocus();
-            if (!passwordTyped) {
-                txtMatKhauForcus();
-                txtMatKhau.setEchoChar('●');
-                passwordTyped = true;
+            textFieldForcus(txtTaiKhoan, JPanTaiKhoan, "Tên đăng nhập", true);
+
+            usernameTyped = true;
+        } else {
+            if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                // hien thi hint text khi input was cleared
+                if (txtTaiKhoan.getText().length() <= 1) {
+                    textFieldForcus(txtTaiKhoan, JPanTaiKhoan, "Nhập tên đăng nhập", false);
+                    usernameTyped = false;
+                }
+            }
+
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                txtMatKhau.requestFocus();
+                if (!passwordTyped) {
+                    txtMatKhauForcus();
+                    txtMatKhau.setEchoChar('●');
+                    passwordTyped = true;
+                }
             }
         }
     }//GEN-LAST:event_txtTaiKhoanKeyPressed
 
     private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
         // TODO add your handling code here:
-      /*  if(String.valueOf(txtMatKhau.getPassword()).indexOf("Tài Khoản")>-1)
+        /*  if(String.valueOf(txtMatKhau.getPassword()).indexOf("Tài Khoản")>-1)
         {
             txtMatKhau.setText("");
         }*/
-         if (!passwordTyped) {
-            txtMatKhauForcus();
+        if (!passwordTyped) {
+            textFieldForcus(txtMatKhau, JPanMatKhau, "Nhập mật khẩu", true);
+            //txtMatKhauForcus();
             txtMatKhau.setEchoChar('●');
             passwordTyped = true;
-        }
-        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            //btnDangNhap.requestFocus();
-            btnDangNhap.doClick();
+        } else {
+            if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                // hien thi hint text khi input was cleared
+                if (String.valueOf(txtMatKhau.getPassword()).length() <= 1) {
+                    textFieldForcus(txtMatKhau, JPanMatKhau, "Nhập mật khẩu", false);
+                    txtMatKhau.setEchoChar((char) 0);
+
+                    passwordTyped = false;
+                }
+            }
+
+            if (KeyEvent.VK_ENTER == evt.getKeyCode()) {
+                //btnDangNhap.requestFocus();
+                btnDangNhap.doClick();
+            }
         }
     }//GEN-LAST:event_txtMatKhauKeyPressed
 
     private void btnDangNhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDangNhapKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnDangNhap.doClick();
         }
-        if(evt.getKeyCode() == KeyEvent.VK_RIGHT){
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
             btnThoat.requestFocus();
         }
     }//GEN-LAST:event_btnDangNhapKeyPressed
 
     private void btnThoatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnThoatKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnThoat.doClick();
         }
-        if(evt.getKeyCode() == KeyEvent.VK_LEFT){
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
             btnDangNhap.requestFocus();
         }
     }//GEN-LAST:event_btnThoatKeyPressed
 
     private void txtTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTaiKhoanMouseClicked
         // TODO add your handling code here:
-        txtTaiKhoanForcus();
+        textFieldForcus(txtTaiKhoan, JPanTaiKhoan, "Nhập tên đăng nhập", true);
     }//GEN-LAST:event_txtTaiKhoanMouseClicked
 
-    public void txtTaiKhoanForcus(){
-        txtTaiKhoan.setText("");
-        setCustomBorder(JPanTaiKhoan,"Tài Khoản", 16);
+    public void textFieldForcus(JTextField textField, JPanel container, String title, boolean isForcus) {
+        if (isForcus) {
+            textField.setText("");
+            setCustomBorder(container, title, 16, true);
+        } else {
+            textField.setText(title + " ");
+            setCustomBorder(container, title, 18, false);
+        }
+
     }
-    public void txtMatKhauForcus(){
+
+    public void txtMatKhauForcus() {
         txtMatKhau.setText("");
-        setCustomBorder(JPanMatKhau,"Mật khẩu", 16);
+        setCustomBorder(JPanMatKhau, "Mật khẩu", 16, true);
     }
     private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
         // TODO add your handling code here:
@@ -337,7 +369,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private void labDangKiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDangKiMouseExited
         // TODO add your handling code here:
-        labDangKi.setForeground(new Color(242,242,242));
+        labDangKi.setForeground(new Color(242, 242, 242));
     }//GEN-LAST:event_labDangKiMouseExited
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -352,30 +384,32 @@ public class LoginView extends javax.swing.JFrame {
 
     private void labQuenMKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labQuenMKMouseExited
         // TODO add your handling code here:
-        labQuenMK.setForeground(new Color(242,242,242));
+        labQuenMK.setForeground(new Color(242, 242, 242));
     }//GEN-LAST:event_labQuenMKMouseExited
 
-    public void setCustomBorder(Object object, String title,int fontSize)
-    {
-        javax.swing.JPanel test=  (javax.swing.JPanel) object;
-        test.setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 0, fontSize)));
+    public void setCustomBorder(Object object, String title, int fontSize, boolean isForcus) {
+        JPanel jPanelObject = (JPanel) object;
+        if (isForcus) {
+            jPanelObject.setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 0, fontSize)));
+        } else {
+            jPanelObject.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        }
+
     }
 
     public static void main(String[] args) {
         new LoginView();
     }
-    public LoginModel getModel()
-    {
+
+    public LoginModel getModel() {
         String taiKhoan = txtTaiKhoan.getText();
         String matKhau = String.valueOf(txtMatKhau.getPassword());
         return new LoginModel(taiKhoan, matKhau);
     }
-    
+
     /**
      * @param args the command line arguments
      */
-    
-    
     public JButton getBtnDangNhap() {
         return btnDangNhap;
     }
@@ -415,12 +449,12 @@ public class LoginView extends javax.swing.JFrame {
     public void setTxtTaiKhoan(JTextField txtTaiKhoan) {
         this.txtTaiKhoan = txtTaiKhoan;
     }
-    
-    public JLabel getLabDK(){
+
+    public JLabel getLabDK() {
         return labDangKi;
     }
-    
-    public JLabel getLabQuenMK(){
+
+    public JLabel getLabQuenMK() {
         return labQuenMK;
     }
 

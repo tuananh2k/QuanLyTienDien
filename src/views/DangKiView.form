@@ -231,9 +231,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="THO&#xc1;T"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThoatActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTaiKhoan">
               <Properties>

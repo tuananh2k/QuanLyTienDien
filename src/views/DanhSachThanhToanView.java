@@ -5,6 +5,9 @@
  */
 package views;
 
+import Config.AppConfig;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +28,11 @@ public class DanhSachThanhToanView extends javax.swing.JPanel {
         dtmNopTien = new DefaultTableModel();
         tblChuaNop.setModel(dtmChuaNop);
         tblNopTien.setModel(dtmNopTien);
+        
+        AppConfig.configTable(tblNopTien);
+        AppConfig.configTable(tblChuaNop);
+        
+
         setVisible(true);
     }
 
