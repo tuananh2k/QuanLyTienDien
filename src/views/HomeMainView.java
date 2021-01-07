@@ -6,8 +6,14 @@
 package views;
 
 import java.awt.Color;
+import java.awt.DisplayMode;
+import java.awt.GraphicsEnvironment;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import models.DanhMucModel;
@@ -26,11 +32,25 @@ public class HomeMainView extends javax.swing.JFrame {
         ImageIcon iconForm = new ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Documents\\NetBeansProjects\\QuanLyTienDien\\src\\icons\\Icon_app.png");
         setIconImage(iconForm.getImage());
         initComponents();
+        setMaximized(true);
         setVisible(true);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    
+    public void setMaximized(boolean maximized){
+    if(maximized){
+        DisplayMode mode = this.getGraphicsConfiguration().getDevice().getDisplayMode();
+        Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
+        this.setMaximizedBounds(new Rectangle(
+                mode.getWidth() - insets.right - insets.left, 
+                mode.getHeight() - insets.top - insets.bottom
+        ));
+        this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+    }else{
+        this.setExtendedState(JFrame.NORMAL);
+    }
+}
+
     public JPanel getJpnThongTin(){
         return jpnThongTin;
     }
