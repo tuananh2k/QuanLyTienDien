@@ -6,6 +6,7 @@
 package views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
@@ -33,8 +34,8 @@ public class HomeMainView extends javax.swing.JFrame {
         setIconImage(iconForm.getImage());
         initComponents();
         setMaximized(true);
+        setLocationRelativeTo(null);
         setVisible(true);
-        setLocationRelativeTo(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public void setMaximized(boolean maximized){
@@ -46,6 +47,9 @@ public class HomeMainView extends javax.swing.JFrame {
                 mode.getHeight() - insets.top - insets.bottom
         ));
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(100, 100, (int) dim.getWidth(), (int) dim.getHeight());
+
     }else{
         this.setExtendedState(JFrame.NORMAL);
     }
