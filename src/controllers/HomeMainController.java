@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import models.DanhMucModel;
+import models.LoginModel;
 import views.HomeMainView;
+import views.LoginView;
 
 /**
  *
@@ -21,7 +23,8 @@ import views.HomeMainView;
 public class HomeMainController {
 
     private HomeMainView view;
-
+    String taikhoan;
+    
     public HomeMainController() {
         view = new HomeMainView();
         ChuyenManHinhController chuyenManHinhController = new ChuyenManHinhController(view.getJpnView());
@@ -33,6 +36,7 @@ public class HomeMainController {
         listDanhMuc.add(new DanhMucModel("DanhSachThanhToan", view.getJpnThanhToan(), view.getLabThanhToan()));
         listDanhMuc.add(new DanhMucModel("QuanLyHoaDon", view.getJpnHoaDon(), view.getLabHoaDon()));
         listDanhMuc.add(new DanhMucModel("ThongKeDoanhThu", view.getJpnThongKe(), view.getLabThongKe()));
+        listDanhMuc.add(new DanhMucModel("QuanLyTaiKhoan", view.getJpnTaiKhoan(), view.getLabTaiKhoan()));
         chuyenManHinhController.setEvent(listDanhMuc);
 
         view.getLabLogout().addMouseListener(new MouseListener() {
@@ -66,7 +70,6 @@ public class HomeMainController {
             }
         });
     }
-
     public static void main(String[] args) {
         new HomeMainController();
     }

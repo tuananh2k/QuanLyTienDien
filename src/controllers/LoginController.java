@@ -32,7 +32,8 @@ public class LoginController {
     SQLServerConnect sqlServerConnect;
     Connection connection;
     HomeMainView homeView;
-    
+    HomeMainController homeMainController;
+    public String tenTK;
 
     public LoginController() {
         this.loginView = new LoginView();
@@ -49,8 +50,10 @@ public class LoginController {
             if (loginValidator(loginModel.getTaiKhoan(), loginModel.getMatKhau())) {
                 new HomeMainController();
                 loginView.dispose();
-                JOptionPane.showMessageDialog(homeView, "Xin chào " + loginModel.getTaiKhoan());
-            }
+                tenTK = loginModel.getTaiKhoan();
+                JOptionPane.showMessageDialog(homeView, "Xin chào " + tenTK);
+            } else
+                JOptionPane.showMessageDialog(loginView, "Đăng nhập thất bại!");
         } else {
             JOptionPane.showMessageDialog(loginView, "Chưa điền tài khoản!");
         }
@@ -63,20 +66,12 @@ public class LoginController {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select * from TAIKHOAN");
             while (rs.next()) {
-                if (rs.getString("tai_khoan").equals(username)) {
-                    if (rs.getString("mat_khau").equals(password)) {
-                        System.out.println("login success");
-                        loginValidate = true;
-                        break;
-                    } else {
-                        JOptionPane.showMessageDialog(homeView, "Mật khẩu sai!");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(homeView, "Tên tài khoản sai!");
+                if (rs.getString("tai_khoan").equals(username) && rs.getString("mat_khau").equals(password)) {
+                    System.out.println("login success");
+                    loginValidate = true;
+                    break;
                 }
-
             }
-            //sqlServerConnect.disconnect();
 
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -145,8 +140,6 @@ public class LoginController {
             }
         };
         return ml;
-    }
-
-    
+    }   
 
 }
