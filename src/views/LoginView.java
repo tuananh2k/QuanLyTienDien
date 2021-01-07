@@ -38,6 +38,7 @@ public class LoginView extends javax.swing.JFrame {
         ImageIcon iconForm = new ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Documents\\NetBeansProjects\\QuanLyTienDien\\src\\icons\\login.png");
         setIconImage(iconForm.getImage());
         initComponents();
+        txtMatKhau.setEchoChar((char)0);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -60,8 +61,8 @@ public class LoginView extends javax.swing.JFrame {
         txtTaiKhoan = new javax.swing.JTextField();
         JPanMatKhau = new javax.swing.JPanel();
         txtMatKhau = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labDangKi = new javax.swing.JLabel();
+        labQuenMK = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,11 +75,6 @@ public class LoginView extends javax.swing.JFrame {
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/loginBtn.png"))); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
-        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangNhapActionPerformed(evt);
-            }
-        });
         btnDangNhap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDangNhapKeyPressed(evt);
@@ -140,15 +136,11 @@ public class LoginView extends javax.swing.JFrame {
 
         txtMatKhau.setBackground(new java.awt.Color(102, 204, 255));
         txtMatKhau.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtMatKhau.setText("Mật Khẩu");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtMatKhauMouseClicked(evt);
-            }
-        });
-        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatKhauActionPerformed(evt);
             }
         });
         txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -171,14 +163,32 @@ public class LoginView extends javax.swing.JFrame {
             .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Đăng Kí");
-        jLabel2.setToolTipText("");
+        labDangKi.setBackground(new java.awt.Color(193, 193, 193));
+        labDangKi.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        labDangKi.setForeground(new java.awt.Color(242, 242, 242));
+        labDangKi.setText("Đăng Kí");
+        labDangKi.setToolTipText("");
+        labDangKi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labDangKiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labDangKiMouseExited(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Quên mật khẩu");
+        labQuenMK.setBackground(new java.awt.Color(193, 193, 193));
+        labQuenMK.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        labQuenMK.setForeground(new java.awt.Color(242, 242, 242));
+        labQuenMK.setText("Quên mật khẩu");
+        labQuenMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labQuenMKMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labQuenMKMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,9 +212,9 @@ public class LoginView extends javax.swing.JFrame {
                             .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE))
                         .addContainerGap(41, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(labDangKi)
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel3)
+                        .addComponent(labQuenMK)
                         .addGap(174, 174, 174))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -223,8 +233,8 @@ public class LoginView extends javax.swing.JFrame {
                         .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(labQuenMK)
+                    .addComponent(labDangKi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThoat)
@@ -246,22 +256,8 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDangNhapActionPerformed
-
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        this.dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThoatActionPerformed
-
-    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatKhauActionPerformed
-
     private void txtTaiKhoanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaiKhoanKeyPressed
         // TODO add your handling code here:
-        System.out.println("user typing text..");
         if(txtTaiKhoan.getText().indexOf("Tài Khoản")>-1)
         {
             txtTaiKhoan.setText("");
@@ -272,6 +268,7 @@ public class LoginView extends javax.swing.JFrame {
             txtMatKhau.requestFocus();
             if (!passwordTyped) {
                 txtMatKhauForcus();
+                txtMatKhau.setEchoChar('●');
                 passwordTyped = true;
             }
         }
@@ -285,6 +282,7 @@ public class LoginView extends javax.swing.JFrame {
         }*/
          if (!passwordTyped) {
             txtMatKhauForcus();
+            txtMatKhau.setEchoChar('●');
             passwordTyped = true;
         }
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
@@ -331,7 +329,31 @@ public class LoginView extends javax.swing.JFrame {
         txtMatKhauForcus();
 
     }//GEN-LAST:event_txtMatKhauMouseClicked
-    
+
+    private void labDangKiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDangKiMouseEntered
+        // TODO add your handling code here:
+        labDangKi.setForeground(Color.white);
+    }//GEN-LAST:event_labDangKiMouseEntered
+
+    private void labDangKiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDangKiMouseExited
+        // TODO add your handling code here:
+        labDangKi.setForeground(new Color(242,242,242));
+    }//GEN-LAST:event_labDangKiMouseExited
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void labQuenMKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labQuenMKMouseEntered
+        // TODO add your handling code here:
+        labQuenMK.setForeground(Color.white);
+    }//GEN-LAST:event_labQuenMKMouseEntered
+
+    private void labQuenMKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labQuenMKMouseExited
+        // TODO add your handling code here:
+        labQuenMK.setForeground(new Color(242,242,242));
+    }//GEN-LAST:event_labQuenMKMouseExited
 
     public void setCustomBorder(Object object, String title,int fontSize)
     {
@@ -393,6 +415,14 @@ public class LoginView extends javax.swing.JFrame {
     public void setTxtTaiKhoan(JTextField txtTaiKhoan) {
         this.txtTaiKhoan = txtTaiKhoan;
     }
+    
+    public JLabel getLabDK(){
+        return labDangKi;
+    }
+    
+    public JLabel getLabQuenMK(){
+        return labQuenMK;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanMatKhau;
@@ -400,10 +430,10 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labDangKi;
+    private javax.swing.JLabel labQuenMK;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables

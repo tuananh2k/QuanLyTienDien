@@ -6,12 +6,18 @@
 package controllers;
 
 import Config.SQLServerConnect;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.LoginModel;
+import views.DangKiView;
 import views.HomeMainView;
 import views.LoginView;
 
@@ -26,26 +32,28 @@ public class LoginController {
     SQLServerConnect sqlServerConnect;
     Connection connection;
     HomeMainView homeView;
+    
 
     public LoginController() {
         this.loginView = new LoginView();
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         loginView.getBtnDangNhap().addActionListener((ae) -> btnDangNhapPerformed());
-
+        loginView.getLabDK().addMouseListener(labDKMouseListener());
+        loginView.getLabQuenMK().addMouseListener(labQuenMKMouseListener());
     }
 
     public void btnDangNhapPerformed() {
         loginModel = loginView.getModel();
-        boolean validate = false;
         if (!loginModel.isEmpty()) {
             if (loginValidator(loginModel.getTaiKhoan(), loginModel.getMatKhau())) {
-                HomeMainController homeMainController = new HomeMainController();
+                new HomeMainController();
                 loginView.dispose();
                 JOptionPane.showMessageDialog(homeView, "Xin chào " + loginModel.getTaiKhoan());
             }
-        } else
+        } else {
             JOptionPane.showMessageDialog(loginView, "Chưa điền tài khoản!");
+        }
     }
 
     boolean loginValidator(String username, String password) {
@@ -76,4 +84,69 @@ public class LoginController {
         }
         return loginValidate;
     }
+
+    private MouseListener labDKMouseListener() {
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                new DangKiController();
+                loginView.dispose();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+
+            }
+        };
+        return ml;
+    }
+
+    private MouseListener labQuenMKMouseListener() {
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                new QuenMKController();
+                loginView.setVisible(false);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        return ml;
+    }
+
+    
+
 }
