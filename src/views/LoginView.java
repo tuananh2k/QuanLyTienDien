@@ -59,7 +59,6 @@ public class LoginView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
-        btnThoat = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         JPanTaiKhoan = new javax.swing.JPanel();
         txtTaiKhoan = new javax.swing.JTextField();
@@ -73,29 +72,17 @@ public class LoginView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(16, 14, 159));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PHẦN MỀM QUẢN LÝ TIỀN ĐIỆN");
 
+        btnDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/loginBtn.png"))); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
         btnDangNhap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDangNhapKeyPressed(evt);
-            }
-        });
-
-        btnThoat.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/thoat.png"))); // NOI18N
-        btnThoat.setText("Thoát");
-        btnThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThoatActionPerformed(evt);
-            }
-        });
-        btnThoat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnThoatKeyPressed(evt);
             }
         });
 
@@ -168,7 +155,7 @@ public class LoginView extends javax.swing.JFrame {
         );
 
         labDangKi.setBackground(new java.awt.Color(193, 193, 193));
-        labDangKi.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        labDangKi.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         labDangKi.setForeground(new java.awt.Color(242, 242, 242));
         labDangKi.setText("Đăng Kí");
         labDangKi.setToolTipText("");
@@ -182,9 +169,9 @@ public class LoginView extends javax.swing.JFrame {
         });
 
         labQuenMK.setBackground(new java.awt.Color(193, 193, 193));
-        labQuenMK.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        labQuenMK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labQuenMK.setForeground(new java.awt.Color(242, 242, 242));
-        labQuenMK.setText("Quên mật khẩu");
+        labQuenMK.setText("Quên Mật Khẩu");
         labQuenMK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labQuenMKMouseEntered(evt);
@@ -198,28 +185,25 @@ public class LoginView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(425, 425, 425)
-                .addComponent(btnDangNhap)
-                .addGap(101, 101, 101)
-                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(JPanTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE))
-                        .addContainerGap(41, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(labDangKi)
-                        .addGap(33, 33, 33)
-                        .addComponent(labQuenMK)
-                        .addGap(174, 174, 174))))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(JPanTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labDangKi)
+                .addGap(121, 121, 121)
+                .addComponent(labQuenMK)
+                .addGap(129, 129, 129))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,17 +217,15 @@ public class LoginView extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(26, 26, 26)
                         .addComponent(JPanTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addComponent(JPanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labQuenMK)
                     .addComponent(labDangKi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThoat)
-                    .addComponent(btnDangNhap))
-                .addGap(28, 28, 28))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,20 +303,8 @@ public class LoginView extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnDangNhap.doClick();
         }
-        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
-            btnThoat.requestFocus();
-        }
+        
     }//GEN-LAST:event_btnDangNhapKeyPressed
-
-    private void btnThoatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnThoatKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnThoat.doClick();
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
-            btnDangNhap.requestFocus();
-        }
-    }//GEN-LAST:event_btnThoatKeyPressed
 
     private void txtTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTaiKhoanMouseClicked
         // TODO add your handling code here:
@@ -371,11 +341,6 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
         labDangKi.setForeground(new Color(242, 242, 242));
     }//GEN-LAST:event_labDangKiMouseExited
-
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnThoatActionPerformed
 
     private void labQuenMKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labQuenMKMouseEntered
         // TODO add your handling code here:
@@ -418,14 +383,7 @@ public class LoginView extends javax.swing.JFrame {
         this.btnDangNhap = btnDangNhap;
     }
 
-    public JButton getBtnThoat() {
-        return btnThoat;
-    }
-
-    public void setBtnThoat(JButton btnThoat) {
-        this.btnThoat = btnThoat;
-    }
-
+  
     public JLabel getjLabel1() {
         return jLabel1;
     }
@@ -462,7 +420,6 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JPanel JPanMatKhau;
     private javax.swing.JPanel JPanTaiKhoan;
     private javax.swing.JButton btnDangNhap;
-    private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

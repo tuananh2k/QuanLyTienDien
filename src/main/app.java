@@ -11,7 +11,7 @@ import controllers.LoginController;
 
 /**
  *
- * @author PhamDoanHieu
+ * @author admin
  */
 public class app {
     public static void main(String[] args) {

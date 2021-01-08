@@ -5,6 +5,7 @@
  */
 package views;
 
+import Config.AppConfig;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -28,6 +29,8 @@ public class QuanLyChiSoDienView extends javax.swing.JPanel {
         initComponents();
         dtm = new DefaultTableModel();
         tblBang.setModel(dtm);
+                 AppConfig.configTable(tblBang);
+
         setVisible(true);
     }
 

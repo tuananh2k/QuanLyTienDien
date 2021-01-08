@@ -55,7 +55,7 @@ public class QuenMatKhauView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(53, 152, 220));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
@@ -69,11 +69,11 @@ public class QuenMatKhauView extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Xác Nhận Lại MK");
 
-        btnThayDoi.setBackground(new java.awt.Color(102, 255, 255));
+        btnThayDoi.setBackground(new java.awt.Color(53, 152, 220));
         btnThayDoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThayDoi.setText("THAY ĐỔI");
 
-        btnThoat.setBackground(new java.awt.Color(102, 255, 255));
+        btnThoat.setBackground(new java.awt.Color(53, 152, 220));
         btnThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThoat.setText("THOÁT");
 
@@ -157,6 +157,7 @@ public class QuenMatKhauView extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THAY ĐỔI LẠI MẬT KHẨU");
 
@@ -242,7 +243,6 @@ public class QuenMatKhauView extends javax.swing.JFrame {
 
     @Override
     public void dispose() {
-        new LoginController();
         super.dispose(); //To change body of generated methods, choose Tools | Templates.
     }
 

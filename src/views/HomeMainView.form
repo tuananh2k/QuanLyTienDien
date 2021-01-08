@@ -46,9 +46,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jpnMenu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Component id="jpnView" pref="1000" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jpnView" pref="1389" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -70,11 +70,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jpnThongTin" alignment="0" pref="354" max="32767" attributes="0"/>
-                  <Component id="jpnChiSoDien" alignment="0" pref="354" max="32767" attributes="0"/>
-                  <Component id="jpnDanhSachThanhToan" pref="354" max="32767" attributes="0"/>
-                  <Component id="jpnQuanLyHoaDon" pref="354" max="32767" attributes="0"/>
-                  <Component id="jpnThongKe" pref="354" max="32767" attributes="0"/>
+                  <Component id="jpnThongTin" alignment="0" pref="349" max="32767" attributes="0"/>
+                  <Component id="jpnChiSoDien" alignment="0" pref="349" max="32767" attributes="0"/>
+                  <Component id="jpnThongKe" pref="349" max="32767" attributes="0"/>
                   <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -82,6 +80,8 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="jpnTaiKhoan" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jpnDanhSachThanhToan" alignment="0" pref="349" max="32767" attributes="0"/>
+                  <Component id="jpnQuanLyHoaDon" alignment="0" pref="349" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -93,14 +93,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnChiSoDien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jpnDanhSachThanhToan" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnQuanLyHoaDon" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jpnDanhSachThanhToan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnThongKe" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnTaiKhoan" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
                       <Component id="labLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -120,7 +120,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" pref="330" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -173,7 +173,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
+                          <EmptySpace pref="53" max="32767" attributes="0"/>
                           <Component id="labThongTin" min="-2" pref="284" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>

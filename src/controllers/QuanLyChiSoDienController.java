@@ -33,17 +33,23 @@ public class QuanLyChiSoDienController {
     Connection connection;
     ListSelectionModel listSelectionModel;
     String maKHSelected = "";
+    static boolean isViewAddedListener = false;
 
     public QuanLyChiSoDienController(QuanLyChiSoDienView view) {
         this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         setHeaderForTable();
-        view.getBtnThem().addActionListener(al -> btnThemPerformed());
-        view.getBtnSua().addActionListener(al -> btnSuaPerfomed());
-        view.getBtnReset().addActionListener(al -> btnResetPerformed());
-        listSelectionModel = view.getTblBang().getSelectionModel();
-        listSelectionModel.addListSelectionListener(listSelectionListener());
+        if (!isViewAddedListener) {
+            view.getBtnThem().addActionListener(al -> btnThemPerformed());
+            view.getBtnSua().addActionListener(al -> btnSuaPerfomed());
+            view.getBtnReset().addActionListener(al -> btnResetPerformed());
+            listSelectionModel = view.getTblBang().getSelectionModel();
+            listSelectionModel.addListSelectionListener(listSelectionListener());
+
+            isViewAddedListener = true;
+
+        }
         getDataFromDB();
     }
 

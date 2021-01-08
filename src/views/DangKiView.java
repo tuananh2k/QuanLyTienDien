@@ -6,6 +6,7 @@
 package views;
 
 import controllers.LoginController;
+import controllers.QuanLyTaiKhoanController;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -21,13 +22,23 @@ public class DangKiView extends javax.swing.JFrame {
     /**
      * Creates new form DangKiView
      */
+    
+     QuanLyTaiKhoanController qltkController;
+    public DangKiView(QuanLyTaiKhoanController qltkController) {
+        this.qltkController = qltkController;
+        initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setVisible(true);
+    }
     public DangKiView() {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,7 +70,7 @@ public class DangKiView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(53, 152, 220));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
@@ -73,12 +84,14 @@ public class DangKiView extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Xác Nhận Lại MK");
 
-        btnTaoTaiKhoan.setBackground(new java.awt.Color(102, 255, 255));
+        btnTaoTaiKhoan.setBackground(new java.awt.Color(53, 152, 220));
         btnTaoTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnTaoTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         btnTaoTaiKhoan.setText("TẠO TÀI KHOẢN");
 
-        btnThoat.setBackground(new java.awt.Color(102, 255, 255));
+        btnThoat.setBackground(new java.awt.Color(53, 152, 220));
         btnThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setText("THOÁT");
 
         txtTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -88,8 +101,9 @@ public class DangKiView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Câu Hỏi Bí Mật");
 
+        chbKhongPhaiRobot.setBackground(new java.awt.Color(255, 255, 255));
         chbKhongPhaiRobot.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        chbKhongPhaiRobot.setText("Nhấn vào đây nếu bạn không phải là Robot.");
+        chbKhongPhaiRobot.setText("Nhấn vào đây nếu bạn đồng ý với Điều khoản dịch vụ");
 
         cboCauHoiBiMat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboCauHoiBiMat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. 1+1=?", "2. Người yêu cũ của bạn tên gìi?", "3. Chữ cái đầu tiên tên crush là? ", "4. Bài hát bạn đang nghe mỗi ngày? ", "5. Bộ phim bạn đang thích là gì?", "6. Bạn thích uống gì nhất? ", "7. Bạn có nhớ ngày sinh nhật của tôi không?", "8. Bạn coi tôi là gì của bạn?", "9. Bạn nghĩ gì về tôi?", "10. Bạn muốn được cùng tôi làm điều gì?", "11. Lần gần nhất bạn khóc là vì? ", "12. Mối tình đầu của bạn là ai?", "13. Nói về nụ hôn đầu tiên?", "14. Tiêu chuẩn người yêu của bạn là gì?", "15. Bạn đang nhớ đến ai?", "16. Bạn còn nhớ người yêu cũ không?", "17. Bạn thân nữ của bạn là ai?", "18. Bạn thân nam của bạn là ai?", "19. Người mà bạn tin tưởng nhất là ai?", "20. Tại sao bạn chưa yêu?", "21. Bạn thích được nhắn tin/nói chuyện với ai ???", "22. Một nơi bạn rất muốn đến là? ", "23. Một chuyện khiến bạn không vui gần đây?", "24. Dạo này bạn thế nào?", "25. Còn thương người yêu cũ không? ", "26. Chữ cái đầu tiên của tên người bạn ghét? ", "27. Ba từ mô tả bản thân bạn? ", "28. Nghề nghiệp bạn mong ước khi còn nhỏ? ", "29. Bạn muốn lập gia đình năm bao nhiêu tuổi? ", "30. Điều gì khiến bạn cảm thấy tự ti? ", "31. Điều bạn tự tin nhất là? ", "32. Mai mốt cưới tôi nha? ", "33. Cho tôi ôm bạn được không? ", "34. Sinh nhật bạn thích được tặng gì? ", "35. Nếu được tự đặt tên cho bản thân thì tên bạn sẽ là gì? ", "36. Hãy trả lời một câu bạn thích nhất!", " " }));
@@ -150,7 +164,7 @@ public class DangKiView extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,9 +188,9 @@ public class DangKiView extends javax.swing.JFrame {
                     .addComponent(cboCauHoiBiMat, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(txtCauTraLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCauTraLoi, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
@@ -190,6 +204,7 @@ public class DangKiView extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ĐĂNG KÍ");
 
@@ -199,19 +214,20 @@ public class DangKiView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,7 +297,11 @@ public class DangKiView extends javax.swing.JFrame {
 
     @Override
     public void dispose() {
-        new LoginController();
+        if(qltkController!=null)
+        {
+                    qltkController.getDataFromDB();
+
+        }
         super.dispose(); //To change body of generated methods, choose Tools | Templates.
     }
 

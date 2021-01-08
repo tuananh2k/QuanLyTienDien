@@ -22,13 +22,21 @@ public class DangKiController {
     DangKiView dangKiView;
     SQLServerConnect sqlServerConnect;
     Connection connection;
-    public DangKiController(){
-        dangKiView = new DangKiView();
+    public DangKiController(QuanLyTaiKhoanController qltkController){
+        dangKiView = new DangKiView(qltkController);
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         dangKiView.getBtnTaoTK().addActionListener(al -> btnDK());
         dangKiView.getBtnThoat().addActionListener(al->btnThoat());
-        
+    }
+
+    public DangKiController() {
+        dangKiView = new DangKiView();
+
+        sqlServerConnect = new SQLServerConnect();
+        connection = sqlServerConnect.connect();
+        dangKiView.getBtnTaoTK().addActionListener(al -> btnDK());
+        dangKiView.getBtnThoat().addActionListener(al->btnThoat());
     }
     
     private void btnDK() {
@@ -47,7 +55,7 @@ public class DangKiController {
             }
 
         } catch (SQLException ex) {
-            if(ex.toString().equals("PRIMARY KEY")){
+            if(ex.toString().indexOf("PRIMARY KEY")>0){
                 JOptionPane.showMessageDialog(dangKiView, "Tài khoản đã tồn tại!");
             } else
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);

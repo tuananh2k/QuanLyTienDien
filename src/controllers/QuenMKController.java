@@ -44,13 +44,14 @@ public class QuenMKController {
         if(!quenMatKhauView.checkNull()){
             try {
                 String sql = "update TAIKHOAN\n" +
-                        " set mat_khau = ? \n" +
-                        " where tai_khoan = ? and cauhoi = ? and traloi = ?";
+                        " set mat_khau = ?, cauhoi = ? , traloi = ? \n" +
+                        " where tai_khoan = ?";
                 PreparedStatement ps = connection.prepareStatement(sql);
                 ps.setString(1, quenMatKhauView.getTxtMK().getText());
-                ps.setString(2, quenMatKhauView.getTxtTaiKhoan().getText());
-                ps.setString(3, quenMatKhauView.getCboHoi().getSelectedItem().toString());
-                ps.setString(4, quenMatKhauView.getTxtTraLoi().getText());
+                ps.setString(2, quenMatKhauView.getCboHoi().getSelectedItem().toString());
+                ps.setString(3, quenMatKhauView.getTxtTraLoi().getText());
+                ps.setString(4, quenMatKhauView.getTxtTaiKhoan().getText());
+
                 int i = ps.executeUpdate();
                 if(i>0)
                     JOptionPane.showMessageDialog(quenMatKhauView, "Thay đổi thành công!");

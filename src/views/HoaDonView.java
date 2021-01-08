@@ -5,7 +5,7 @@
  */
 package views;
 
-
+import Config.AppConfig;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,8 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HoaDonView extends javax.swing.JFrame {
 
-    String header[] = {"Chỉ Số Mới","Chỉ Số Cũ","Điện năng tiêu thụ","Thành tiền"};
+    String header[] = {"Chỉ Số Mới", "Chỉ Số Cũ", "Điện năng tiêu thụ", "Thành tiền"};
     DefaultTableModel dtm;
+
     /**
      * Creates new form HoaDon
      */
@@ -30,45 +31,48 @@ public class HoaDonView extends javax.swing.JFrame {
         tblBang.setModel(dtm);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+        AppConfig.configTable(tblBang);
+
         this.add(new JLabel(new ImageIcon("C:\\Users\\MyPC\\Downloads\\thumbnail.png")));
-        
-        
+
         this.setVisible(true);
     }
-    
-    public void dispose(){
+
+    public void dispose() {
         super.dispose();
     }
-    
-    public static void main(String[] args) {
-        new HoaDonView();
-    }
-    
-    public DefaultTableModel getDtm(){
+
+   
+
+    public DefaultTableModel getDtm() {
         return dtm;
     }
-    
-    public void setMaKH(String makh){
+
+    public void setMaKH(String makh) {
         labMaKH.setText(makh);
     }
-    public void setMaHD(String mahd){
+
+    public void setMaHD(String mahd) {
         labMaHD.setText(mahd);
     }
-    public void setTen(String ten){
+
+    public void setTen(String ten) {
         labTen.setText(ten);
     }
-    public void setDiaChi(String dc){
+
+    public void setDiaChi(String dc) {
         labDiaChi.setText(dc);
     }
-    public void setLoaiDien(String ld){
+
+    public void setLoaiDien(String ld) {
         labLoaiDien.setText(ld);
     }
-    public void setMaThang(String mathang){
+
+    public void setMaThang(String mathang) {
         labMaThang.setText(mathang);
     }
-    
-    public JButton btnOK(){
+
+    public JButton btnOK() {
         return btnOK;
     }
 

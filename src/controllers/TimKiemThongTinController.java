@@ -11,20 +11,20 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.TimKiemModel;
-import views.TimKiemmaKHView;
+import views.TimKiemView;
 
 /**
  *
  * @author PhamDoanHieu
  */
 public class TimKiemThongTinController {
-    TimKiemmaKHView view;
+    TimKiemView view;
     TimKiemModel model;
     QuanLyThongTinController quanLyThongTinController;  
     
     public TimKiemThongTinController(QuanLyThongTinController quanLyThongTinController) {
         this.quanLyThongTinController = quanLyThongTinController;
-        view = new TimKiemmaKHView(quanLyThongTinController);
+        view = new TimKiemView();
         view.getBtnTimKiem().addActionListener(al-> btnTimKiemPerformed());
     }
 

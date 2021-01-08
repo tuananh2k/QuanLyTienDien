@@ -5,6 +5,7 @@
  */
 package views;
 
+import Config.AppConfig;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class QuanLyTaiKhoanView extends javax.swing.JPanel {
 
     DefaultTableModel dtm;
-    String[] header = {"Tài khoản","Mật khẩu","Câu hỏi bí mật","Câu trả lời"};
+    String[] header = {"Tài khoản", "Mật khẩu", "Câu hỏi bí mật", "Câu trả lời"};
+
     /**
      * Creates new form QuanLyTaiKhoanView
      */
@@ -24,6 +26,8 @@ public class QuanLyTaiKhoanView extends javax.swing.JPanel {
         initComponents();
         dtm = new DefaultTableModel(header, 0);
         tblBang.setModel(dtm);
+        AppConfig.configTable(tblBang);
+
         setVisible(true);
     }
 
@@ -42,14 +46,15 @@ public class QuanLyTaiKhoanView extends javax.swing.JPanel {
     public JButton getBtnThem() {
         return btnThem;
     }
-    
-    public JButton getBtnXoa(){
+
+    public JButton getBtnXoa() {
         return btnXoa;
     }
 
     public JTable getTblBang() {
         return tblBang;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

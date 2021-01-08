@@ -23,6 +23,7 @@ public class ThongKeDoanhThuController {
     Connection connection;
     ThongKeDoanhThuView view;
     ThongKeTongDoanhThuModel model;
+        static boolean isViewAddedListener = false;
 
     public ThongKeDoanhThuController(ThongKeDoanhThuView view) {
         this.view = view;
@@ -30,7 +31,13 @@ public class ThongKeDoanhThuController {
         connection = sqlServerConnect.connect();
         getData();
         tinhTongDoanhThu();
-        view.getBtnTim().addActionListener(al -> timTheoMaThang());
+        if(!isViewAddedListener)
+        {
+                    view.getBtnTim().addActionListener(al -> timTheoMaThang());
+
+            isViewAddedListener=true;
+
+        }
 
     }
 

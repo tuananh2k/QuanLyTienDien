@@ -5,6 +5,7 @@
  */
 package views;
 
+import Config.AppConfig;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +40,7 @@ public class QuanLyThongTinView extends javax.swing.JPanel {
         initComponents();
         dtm = new DefaultTableModel();
         tblBang.setModel(dtm);
+         AppConfig.configTable(tblBang);
         this.setVisible(true);
 
     }

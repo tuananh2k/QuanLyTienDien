@@ -5,6 +5,7 @@
  */
 package views;
 
+import Config.AppConfig;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -26,6 +27,8 @@ public class ThongKeDoanhThuView extends javax.swing.JPanel {
         dtm = new DefaultTableModel(header, 0);
         dtm.setRowCount(0);
         tblBang.setModel(dtm);
+                 AppConfig.configTable(tblBang);
+
         this.setVisible(true);
     }
     public DefaultTableModel getDtm(){

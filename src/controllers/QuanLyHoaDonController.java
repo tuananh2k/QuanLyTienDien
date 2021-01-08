@@ -23,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import models.HoaDonModel;
 import views.QuanLyHoaDonView;
+import views.TimKiemView;
 import views.TimKiemmaHDView;
 
 /**
@@ -32,17 +33,21 @@ import views.TimKiemmaHDView;
 public class QuanLyHoaDonController {
 
     QuanLyHoaDonView view;
-    TimKiemmaHDView viewTimKiem;
+    TimKiemView viewTimKiem;
     SQLServerConnect serverConnect;
     Connection conn;
     ListSelectionModel listSelectionModel;
+    static boolean             isViewAddedListener=false;
 
+    
     public QuanLyHoaDonController(QuanLyHoaDonView view) {
         this.view = view;
         serverConnect = new SQLServerConnect();
         conn = serverConnect.connect();
         getDataDB();
-        view.getBtnInHD().addActionListener(new ActionListener() {
+        if(!isViewAddedListener)
+        {
+            view.getBtnInHD().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 int select = view.getTbl().getSelectedRow();
@@ -64,6 +69,10 @@ public class QuanLyHoaDonController {
                 setLabel(select);
             }
         });
+            isViewAddedListener=true;
+
+        }
+        
     }
 
     private void showData(ResultSet rs) throws SQLException {
@@ -146,12 +155,12 @@ public class QuanLyHoaDonController {
     }
 
     private void TimKiem() {
-        viewTimKiem = new TimKiemmaHDView();
+        viewTimKiem = new TimKiemView();
         viewTimKiem.getBtnTimKiem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    String maKH = viewTimKiem.getTxtMaKH().getText();
+                    String maKH = viewTimKiem.getTxtKey().getText();
                     String sql = "select HOADON.maKH, hoTen, maHD, ldtt, loaiDien, tien from HOADON\n"
                             + "join HOTIEUTHU on HOADON.maKH = HOTIEUTHU.maKH\n"
                             + "where HOADON.maKH+HoaDon.maHD+hoTen like ?";

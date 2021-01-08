@@ -85,7 +85,7 @@ public class LoginController {
             @Override
             public void mouseClicked(MouseEvent me) {
                 new DangKiController();
-                loginView.dispose();
+                
             }
 
             @Override
@@ -116,7 +116,7 @@ public class LoginController {
             @Override
             public void mouseClicked(MouseEvent me) {
                 new QuenMKController();
-                loginView.setVisible(false);
+                
             }
 
             @Override

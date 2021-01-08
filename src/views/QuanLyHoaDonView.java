@@ -5,6 +5,7 @@
  */
 package views;
 
+import Config.AppConfig;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -27,6 +28,8 @@ public class QuanLyHoaDonView extends javax.swing.JPanel {
         dtm = new DefaultTableModel(header, 0);
         dtm.setRowCount(0);
         tblBang.setModel(dtm);
+                 AppConfig.configTable(tblBang);
+
         setVisible(true);
     }
     public JLabel getTen(){
@@ -89,9 +92,9 @@ public class QuanLyHoaDonView extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(245, 245, 245));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
 
         jPanelThanhToan.setBackground(new java.awt.Color(255, 255, 255));
         jPanelThanhToan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thanh toán"));
@@ -200,7 +203,7 @@ public class QuanLyHoaDonView extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(tblBang);
 
-        btnThanhToan.setBackground(new java.awt.Color(51, 255, 51));
+        btnThanhToan.setBackground(new java.awt.Color(76, 175, 80));
         btnThanhToan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         btnThanhToan.setText("THANH TOÁN");

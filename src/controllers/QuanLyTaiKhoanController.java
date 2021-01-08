@@ -31,16 +31,23 @@ public class QuanLyTaiKhoanController {
     Connection connection;
     ListSelectionModel listSelectionModel;
     String tenTK;
+    static boolean isViewAddedListener = false;
 
     public QuanLyTaiKhoanController(QuanLyTaiKhoanView view) {
         this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         getDataFromDB();
-        view.getBtnThem().addActionListener(al -> BtnThem());
         listSelectionModel = view.getTblBang().getSelectionModel();
-        view.getBtnSua().addActionListener(al -> BtnSua());
-        view.getBtnXoa().addActionListener(al -> btnXoa());
+        view.getBtnThem().addActionListener(al -> BtnThem());
+            view.getBtnSua().addActionListener(al -> BtnSua());
+            view.getBtnXoa().addActionListener(al -> btnXoa());
+//        if (!isViewAddedListener) {
+//            
+//            isViewAddedListener = true;
+//
+//        }
+
     }
 
     public void getDataFromDB() {
@@ -59,7 +66,7 @@ public class QuanLyTaiKhoanController {
     }
 
     private void BtnThem() {
-        new DangKiController();
+        DangKiController c = new DangKiController(this);
     }
 
     private void BtnSua() {
@@ -87,14 +94,16 @@ public class QuanLyTaiKhoanController {
                         int i = ps.executeUpdate();
                         if (i > 0) {
                             JOptionPane.showMessageDialog(view, "Xoá thành công!");
+                            
                         }
                     }
                     getDataFromDB();
                 } catch (SQLException ex) {
                     Logger.getLogger(QuanLyTaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else
+            } else {
                 JOptionPane.showMessageDialog(view, "Không được xoá tài khoản admin!!");
+            }
         } else {
             JOptionPane.showMessageDialog(view, "Chưa chọn hàng!");
         }

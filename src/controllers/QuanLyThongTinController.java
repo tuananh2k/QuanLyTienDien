@@ -20,7 +20,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import models.HoTieuThuModel;
 import views.QuanLyThongTinView;
-import views.TimKiemmaKHView;
+import views.TimKiemView;
 
 /**
  *
@@ -35,19 +35,26 @@ public class QuanLyThongTinController {
     Connection connection;
     ListSelectionModel listSelectionModel;
     String maKHSelected = "";
-
+    static boolean isViewAddedListener = false;
     public QuanLyThongTinController(QuanLyThongTinView view) {
         this.view = view;
         sqlServerConnect = new SQLServerConnect();
         connection = sqlServerConnect.connect();
         setHeaderForTable();
-        view.getBtnThem().addActionListener(al -> btnThemPerformed());
-        view.getBtnReset().addActionListener(al -> btnResetPerformed());
-        view.getBtnSua().addActionListener(al -> btnSuaPerformed());
-        listSelectionModel = view.getTblBang().getSelectionModel();
-        listSelectionModel.addListSelectionListener(listSelectionListener());
-        view.getBtnTimKiem().addActionListener(al -> btnTimKiemPerformed());
+        if(!isViewAddedListener)
+        {
+            
+            view.getBtnThem().addActionListener(al -> btnThemPerformed());
+            view.getBtnReset().addActionListener(al -> btnResetPerformed());
+            view.getBtnSua().addActionListener(al -> btnSuaPerformed());
+            listSelectionModel = view.getTblBang().getSelectionModel();
+            listSelectionModel.addListSelectionListener(listSelectionListener());
+            view.getBtnTimKiem().addActionListener(al -> btnTimKiemPerformed());
+            isViewAddedListener=true;
+
+        }
         getDataFromDB();
+        
     }
 
     ListSelectionListener listSelectionListener() {
