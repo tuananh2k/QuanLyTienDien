@@ -139,7 +139,7 @@ public class QuanLyTaiKhoanView extends javax.swing.JPanel {
             }
         });
 
-        btnXoa.setBackground(new java.awt.Color(227, 227, 227));
+        btnXoa.setBackground(new java.awt.Color(209, 41, 41));
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/baseline_delete_forever_black_24dp.png"))); // NOI18N
         btnXoa.setText("Xoá");

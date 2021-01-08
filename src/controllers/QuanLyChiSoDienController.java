@@ -145,7 +145,7 @@ public class QuanLyChiSoDienController {
             }
             ps.close();
         } catch (Exception e) {
-            if (e.toString().contains("duplicate key")) {
+            if (e.toString().contains("PRIMARY KEY")) {
                 JOptionPane.showMessageDialog(view, "Trùng khoá chính!");
             } else if (e.toString().contains("String or binary data would be truncated")) {
                 JOptionPane.showMessageDialog(view, "Không thể để 1 trường quá dài!");
