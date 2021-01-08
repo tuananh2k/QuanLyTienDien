@@ -2,7 +2,6 @@ package main;
 
 
 import controllers.LoginController;
-import controllers.LoginController;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

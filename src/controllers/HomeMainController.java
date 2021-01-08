@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import models.DanhMucModel;
+import models.LoginModel;
 import views.HomeMainView;
+import views.LoginView;
 
 /**
  *
@@ -21,20 +23,27 @@ import views.HomeMainView;
 public class HomeMainController {
 
     private HomeMainView view;
-   
-    public HomeMainController() {
+    final String taikhoan;
+    
+    public HomeMainController(String taiKhoan) {
+        this.taikhoan = taiKhoan;
+        
         view = new HomeMainView();
         ChuyenManHinhController chuyenManHinhController = new ChuyenManHinhController(view.getJpnView());
         chuyenManHinhController.setDashboard(view.getJpnThongTin(), view.getLabThongTin()); //gọi nút mặc định khi mở view
-
+         
         List<DanhMucModel> listDanhMuc = new ArrayList<>();
         listDanhMuc.add(new DanhMucModel("QuanLyThongTin", view.getJpnThongTin(), view.getLabThongTin()));
         listDanhMuc.add(new DanhMucModel("QuanLyChiSoDien", view.getJpnChiSoDien(), view.getLabChiSoDien()));
         listDanhMuc.add(new DanhMucModel("DanhSachThanhToan", view.getJpnThanhToan(), view.getLabThanhToan()));
         listDanhMuc.add(new DanhMucModel("QuanLyHoaDon", view.getJpnHoaDon(), view.getLabHoaDon()));
         listDanhMuc.add(new DanhMucModel("ThongKeDoanhThu", view.getJpnThongKe(), view.getLabThongKe()));
+        listDanhMuc.add(new DanhMucModel("QuanLyTaiKhoan", view.getJpnTaiKhoan(), view.getLabTaiKhoan()));
         chuyenManHinhController.setEvent(listDanhMuc);
+                checkAdmin(taiKhoan);
 
+        
+        
         view.getLabLogout().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
@@ -66,8 +75,15 @@ public class HomeMainController {
             }
         });
     }
-
-    public static void main(String[] args) {
-        new HomeMainController();
+    public void checkAdmin(String taikhoan){
+        if(taikhoan.compareTo("admin")!=0){
+            view.getJpnTaiKhoan().setVisible(false);
+        }
+            
     }
+    public static void main(String[] args) {
+        new HomeMainController("admin");
+    }
+
+    
 }

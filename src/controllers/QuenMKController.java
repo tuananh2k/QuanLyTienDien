@@ -31,6 +31,15 @@ public class QuenMKController {
         quenMatKhauView.getBtnThoat().addActionListener(al->btnThoat());
     }
 
+    QuenMKController(String tenTK) {
+        quenMatKhauView = new QuenMatKhauView();
+        quenMatKhauView.getTxtTaiKhoan().setText(tenTK);
+        quenMatKhauView.getTxtTaiKhoan().setEnabled(false);
+        sqlServerConnect = new SQLServerConnect();
+        connection = sqlServerConnect.connect();
+        quenMatKhauView.getBtnThayDoi().addActionListener(al -> btnThayDoi());
+    }
+
     private void btnThayDoi() {
         if(!quenMatKhauView.checkNull()){
             try {

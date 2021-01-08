@@ -11,6 +11,7 @@ import models.DanhMucModel;
 import views.QuanLyChiSoDienView;
 import views.DanhSachThanhToanView;
 import views.QuanLyHoaDonView;
+import views.QuanLyTaiKhoanView;
 import views.QuanLyThongTinView;
 import views.ThongKeDoanhThuView;
 
@@ -33,6 +34,7 @@ public class ChuyenManHinhController {
     DanhSachThanhToanView danhSachThanhToanView = new DanhSachThanhToanView();
     QuanLyHoaDonView quanLyHoaDonView = new QuanLyHoaDonView();
     ThongKeDoanhThuView thongKeDoanhThuView = new ThongKeDoanhThuView();
+    QuanLyTaiKhoanView quanLyTaiKhoanView = new QuanLyTaiKhoanView();
 
     public ChuyenManHinhController(JPanel jpnRoot) {
         this.jpnRoot = jpnRoot;
@@ -96,6 +98,9 @@ public class ChuyenManHinhController {
                     node = thongKeDoanhThuView;
                     new ThongKeDoanhThuController((ThongKeDoanhThuView) thongKeDoanhThuView);
                     break;
+                case "QuanLyTaiKhoan":
+                    node = quanLyTaiKhoanView;
+                    new QuanLyTaiKhoanController(quanLyTaiKhoanView);
                 default:
                     break;
             }

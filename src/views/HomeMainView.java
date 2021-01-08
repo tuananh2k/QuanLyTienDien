@@ -38,58 +38,78 @@ public class HomeMainView extends javax.swing.JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    public void setMaximized(boolean maximized){
-    if(maximized){
-        DisplayMode mode = this.getGraphicsConfiguration().getDevice().getDisplayMode();
-        Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
-        this.setMaximizedBounds(new Rectangle(
-                mode.getWidth() - insets.right - insets.left, 
-                mode.getHeight() - insets.top - insets.bottom
-        ));
-        this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(100, 100, (int) dim.getWidth(), (int) dim.getHeight());
 
-    }else{
-        this.setExtendedState(JFrame.NORMAL);
+
+    public void setMaximized(boolean maximized) {
+        if (maximized) {
+            DisplayMode mode = this.getGraphicsConfiguration().getDevice().getDisplayMode();
+            Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
+            this.setMaximizedBounds(new Rectangle(
+                    mode.getWidth() - insets.right - insets.left,
+                    mode.getHeight() - insets.top - insets.bottom
+            ));
+            this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        } else {
+            this.setExtendedState(JFrame.NORMAL);
+        }
     }
-}
+    
+    
 
-    public JPanel getJpnThongTin(){
+    public JPanel getJpnThongTin() {
         return jpnThongTin;
     }
-    public JLabel getLabThongTin(){
+
+    public JLabel getLabThongTin() {
         return labThongTin;
     }
-    public JPanel getJpnChiSoDien(){
+
+    public JPanel getJpnChiSoDien() {
         return jpnChiSoDien;
     }
-    public JLabel getLabChiSoDien(){
+
+    public JLabel getLabChiSoDien() {
         return labChiSoDien;
     }
-    public JPanel getJpnThongKe(){
+
+    public JPanel getJpnThongKe() {
         return jpnThongKe;
     }
-    public JLabel getLabThongKe(){
+
+    public JLabel getLabThongKe() {
         return labThongKe;
     }
-    public JPanel getJpnThanhToan(){
+
+    public JPanel getJpnThanhToan() {
         return jpnDanhSachThanhToan;
     }
-    public JLabel getLabThanhToan(){
-        return  labThanhToan;
+
+    public JLabel getLabThanhToan() {
+        return labThanhToan;
     }
-    public JPanel getJpnHoaDon(){
+
+    public JPanel getJpnHoaDon() {
         return jpnQuanLyHoaDon;
     }
-    public JLabel getLabHoaDon(){
+
+    public JLabel getLabHoaDon() {
         return labHoaDon;
     }
-    public JPanel getJpnView(){
+
+    public JPanel getJpnView() {
         return jpnView;
     }
-    public JLabel getLabLogout(){
+
+    public JLabel getLabLogout() {
         return labLogout;
+    }
+
+    public JLabel getLabTaiKhoan() {
+        return labTaiKhoan;
+    }
+
+    public JPanel getJpnTaiKhoan() {
+        return jpnTaiKhoan;
     }
 
     /**
@@ -116,6 +136,8 @@ public class HomeMainView extends javax.swing.JFrame {
         jpnThongKe = new javax.swing.JPanel();
         labThongKe = new javax.swing.JLabel();
         labLogout = new javax.swing.JLabel();
+        jpnTaiKhoan = new javax.swing.JPanel();
+        labTaiKhoan = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -137,7 +159,7 @@ public class HomeMainView extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -163,7 +185,7 @@ public class HomeMainView extends javax.swing.JFrame {
         jpnThongTinLayout.setHorizontalGroup(
             jpnThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnThongTinLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(labThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -301,20 +323,47 @@ public class HomeMainView extends javax.swing.JFrame {
             }
         });
 
+        jpnTaiKhoan.setBackground(new java.awt.Color(76, 175, 80));
+        jpnTaiKhoan.setMinimumSize(new java.awt.Dimension(0, 90));
+
+        labTaiKhoan.setFont(new java.awt.Font("Candara", 0, 20)); // NOI18N
+        labTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        labTaiKhoan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/baseline_admin_panel_settings_white_24dp.png"))); // NOI18N
+        labTaiKhoan.setText("QUẢN LÝ TÀI KHOẢN");
+
+        javax.swing.GroupLayout jpnTaiKhoanLayout = new javax.swing.GroupLayout(jpnTaiKhoan);
+        jpnTaiKhoan.setLayout(jpnTaiKhoanLayout);
+        jpnTaiKhoanLayout.setHorizontalGroup(
+            jpnTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnTaiKhoanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jpnTaiKhoanLayout.setVerticalGroup(
+            jpnTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnTaiKhoanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
         jpnMenu.setLayout(jpnMenuLayout);
         jpnMenuLayout.setHorizontalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-            .addComponent(jpnChiSoDien, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-            .addComponent(jpnDanhSachThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-            .addComponent(jpnQuanLyHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-            .addComponent(jpnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+            .addComponent(jpnThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jpnChiSoDien, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jpnDanhSachThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jpnQuanLyHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jpnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpnMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jpnTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnMenuLayout.setVerticalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +379,9 @@ public class HomeMainView extends javax.swing.JFrame {
                 .addComponent(jpnQuanLyHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labLogout)
                 .addContainerGap())
         );
@@ -391,7 +442,7 @@ public class HomeMainView extends javax.swing.JFrame {
 
     private void labLogoutMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labLogoutMouseReleased
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_labLogoutMouseReleased
 
     private void labLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labLogoutMouseExited
@@ -402,9 +453,6 @@ public class HomeMainView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        new HomeMainView();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -414,12 +462,14 @@ public class HomeMainView extends javax.swing.JFrame {
     private javax.swing.JPanel jpnDanhSachThanhToan;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnQuanLyHoaDon;
+    private javax.swing.JPanel jpnTaiKhoan;
     private javax.swing.JPanel jpnThongKe;
     private javax.swing.JPanel jpnThongTin;
     private javax.swing.JPanel jpnView;
     private javax.swing.JLabel labChiSoDien;
     private javax.swing.JLabel labHoaDon;
     private javax.swing.JLabel labLogout;
+    private javax.swing.JLabel labTaiKhoan;
     private javax.swing.JLabel labThanhToan;
     private javax.swing.JLabel labThongKe;
     private javax.swing.JLabel labThongTin;

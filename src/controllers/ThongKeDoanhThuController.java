@@ -36,6 +36,7 @@ public class ThongKeDoanhThuController {
 
     private void getData() {
         try {
+            view.getDtm().setRowCount(0);
             String sql = "select thongke.maKH,thongke.maHD,maThang,tien from THONGKE\n"
                     + "	join HOADON on THONGKE.maHD = HOADON.maHD";
             PreparedStatement ps = connection.prepareStatement(sql);

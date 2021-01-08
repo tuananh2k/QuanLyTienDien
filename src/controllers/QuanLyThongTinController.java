@@ -30,7 +30,7 @@ public class QuanLyThongTinController {
 
     QuanLyThongTinView view;
     HoTieuThuModel model;
-    private final String[] tableHeaders = {"Mã KH", "Họ tên", "Giới tính", "Ngày sinh", "CMND", "SĐT", "Ngày đăng ký", "Địa chỉ"};
+    private final String[] tableHeaders = {"Mã KH", "Họ tên", "Giới tính", "Ngày sinh", "CMND", "SĐT", "Ngày đăng ký", "Địa chỉ","Loại điện"};
     SQLServerConnect sqlServerConnect;
     Connection connection;
     ListSelectionModel listSelectionModel;
@@ -152,7 +152,7 @@ public class QuanLyThongTinController {
             }
             ps.close();
         } catch (SQLException ex) {
-            if (ex.toString().contains("duplicate key")) {
+            if (ex.toString().contains("PRIMARY KEY")) {
                 JOptionPane.showMessageDialog(view, "Trùng khoá chính!");
             } else if (ex.toString().contains("String or binary data would be truncated")) {
                 JOptionPane.showMessageDialog(view, "Không thể để 1 trường quá dài!");
