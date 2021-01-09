@@ -47,13 +47,13 @@ public class LoginController {
         loginModel = loginView.getModel();
         if (!loginModel.isEmpty()) {
             if (loginValidator(loginModel.getTaiKhoan(), loginModel.getMatKhau())) {
-                                String tenTK = loginModel.getTaiKhoan();
-
+                String tenTK = loginModel.getTaiKhoan();
                 new HomeMainController(tenTK);
                 loginView.dispose();
                 JOptionPane.showMessageDialog(homeView, "Xin chào " + tenTK);
-            } else
+            } else {
                 JOptionPane.showMessageDialog(loginView, "Đăng nhập thất bại!");
+            }
         } else {
             JOptionPane.showMessageDialog(loginView, "Chưa điền tài khoản!");
         }
@@ -85,7 +85,7 @@ public class LoginController {
             @Override
             public void mouseClicked(MouseEvent me) {
                 new DangKiController();
-                
+
             }
 
             @Override
@@ -116,7 +116,7 @@ public class LoginController {
             @Override
             public void mouseClicked(MouseEvent me) {
                 new QuenMKController();
-                
+
             }
 
             @Override
@@ -140,6 +140,6 @@ public class LoginController {
             }
         };
         return ml;
-    }   
+    }
 
 }
